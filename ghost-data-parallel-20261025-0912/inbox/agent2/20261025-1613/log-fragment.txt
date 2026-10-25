@@ -1,0 +1,20 @@
+## [2026-10-25T16:14:40+06:00] v10 identity-link cache diagnosis
+
+User Prompt (verbatim, secrets redacted):
+Follow up as Agent 2. Do a read-only diagnosis of the v10 sample unresolved identity-link cases (05, 16, 24; and 01, 02, 04 with no subject-linked evidence) using participant-facing data and current extraction/cache only. Do not open sample_output.csv or use labels. Determine whether any valid time-bounded identifier link is present but missed, versus genuinely insufficient/ambiguous identity evidence. Propose only general rules with synthetic tests; do not edit live source, run inference, or touch checkpoints/output. Stage a short report under your Agent 2 inbox and send Agent 0 the key findings.
+Agent Response Summary:
+Ran a read-only diagnosis using the participant-facing sample requests and identity tables plus the fingerprint-matched v10 extraction cache. Cases 05, 16, and 24 have unique identities and exact time-valid links already retrieved by the current candidate index; cases 01, 02, and 04 resolve uniquely but have no exact subject-linked hit in this cache. Staged the case report with general synthetic regression proposals and sent the key findings to Agent 0; no labels, inference, checkpoints, or output files were used.
+
+Actions:
+* Read the six named request rows, identity/audit tables, current identity resolver and candidate index, and `.cache/sample_v10/extract/591218c3d8466898d72aa48d1f699b0d21fb3b98f4cd29aa13ba85f92c430cc1/` read-only.
+* Staged `identity-diagnosis.md` and `change-summary.md` under `inbox/agent2/20261025-1613/`.
+* Sent the key findings to Agent 0's `Implement Ghost Data audit agent` chat with the user's authorization.
+* Updated `status/agent2.md`; no source files or run artifacts were changed.
+
+Context:
+tool=Codex
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent2
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent2
+parent_agent=Agent 0

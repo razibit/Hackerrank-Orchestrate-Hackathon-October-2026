@@ -1,0 +1,11 @@
+# Independent end-to-end cases to implement and run
+
+These are proposed fixtures, not executed audit-agent tests. Create these in a temporary dataset and keep them separate from official participant data.
+
+1. Non-deletion intent: request_text says "Send my data export. Do not delete my account." A matching profile remains. Expected: NOT_APPLICABLE with []. This checks negation and prevents unauthorized remediation. Add a Bengali equivalent: "আমার তথ্যের কপি দিন। আমার অ্যাকাউন্ট মুছবেন না।"
+2. Historical email plus recreation: request uses an old email, audit history links it to the current user. Pre-cutoff readback proves a search record remains under that old email; connector configuration proves an active sync. Expected: INCOMPLETE; REPORT_REMAINING_RECORD followed by REPORT_ACTIVE_DATA_FLOW; disable the flow before deleting the search record; verify record absence before disabled-flow verification according to canonical operation order. Findings cite the fixture's proof IDs; all future steps use empty IDs.
+3. Compliant tombstone and retained security record: deletion authorized; pre-cutoff snapshot proves a tombstone keeps only stable user_id, all prohibited direct identifiers are null, security record remains within retention, no remaining copies or recreation paths in a fully scoped fixture. Expected: COMPLETE, with VERIFY_RECORD_PRESENT for security followed by VERIFY_RECORD_REDACTED for the tombstone. Cite pre-cutoff proof. Do not delete either retained resource.
+4. Future-evidence trap: pre-cutoff direct readback proves a profile exists; post-cutoff snapshot shows it absent. Expected at cutoff: INCOMPLETE using only earlier proof. A successful deletion activity claim must not override direct readback.
+5. Replica drift: primary proves absence, regional replica still contains historical email/hash. Expected: INCOMPLETE; remediate the exposed replica and cite its actual snapshot. Do not infer absence from a missing row in an unrelated or incomplete snapshot.
+
+For each implemented fixture, spell out every seven-field expected step in evaluation_report.md, execute the real pipeline, and record observed results. Do not substitute a schema validator result for a reasoning result.

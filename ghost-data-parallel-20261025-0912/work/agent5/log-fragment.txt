@@ -1,0 +1,5 @@
+LOGGING BLOCKER — no valid AGENTS.md session/per-turn entry is supplied.
+
+The authoritative session metadata identifies the harness as Codex Desktop and the provider as OpenAI, but it contains no exact runtime model identifier. A targeted check of the current session metadata and response items found no model, model_name, model_id, selected_model, or resolved_model value. The user instruction and AGENTS.md prohibit guessed or placeholder model names. Therefore this file records the blocker; it is not a valid transcript fragment and must not be appended as if it were one.
+
+The task prompt and persistent user instructions are preserved separately in the staged Markdown prompt documents. The shared root log remains owned by Agent 0.

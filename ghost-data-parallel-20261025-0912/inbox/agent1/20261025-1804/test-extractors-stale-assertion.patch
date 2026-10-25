@@ -1,0 +1,11 @@
+diff --git a/code/tests/test_extractors.py b/code/tests/test_extractors.py
+--- a/code/tests/test_extractors.py
++++ b/code/tests/test_extractors.py
+@@ -143,6 +143,6 @@
+         self.assertEqual(len(observations), 1)
+         item = observations[0]
+         self.assertEqual(item.locator, "page:2:line:1")
+-        self.assertEqual((item.system_id, item.resource_id, item.category), ("legal_retention_service", "ORD-20264207", "LEGAL_HOLD_RECORD"))
++        self.assertEqual((item.system_id, item.resource_id, item.category), ("legal_retention_service", "ORD-20264207", "UNRESOLVED"))
+         self.assertEqual(item.fields["subject_reference"], "user_12")
+         self.assertEqual(item.fields["retention_until"], "09 May 2033")

@@ -1,0 +1,12 @@
+.venv/
+.env
+.env.local
+__pycache__/
+*.pyc
+work/
+.cache/
+.run/
+output.csv
+sample_predictions.csv
+code.zip
+agent-trace.zip

@@ -1,0 +1,1650 @@
+## [2026-10-24T17:15:48.633882+00:00] SESSION START
+
+tool=Codex
+model=gpt-6.1-sol
+Repo Root: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Branch: main
+Worktree: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Parent Agent: none
+Language: py
+Time Remaining: not configured
+
+## [2026-10-24T17:34:25.751560+00:00] Consolidate hackathon research and prepare workspace
+
+User Prompt (verbatim, secrets redacted):
+# Mission: Exhaustive Hackathon Research Consolidation and Workspace Preparation
+
+You are acting as an **elite AI engineering agent, hackathon strategist, senior software architect, technical researcher, and execution coordinator**.
+
+Your mission is to thoroughly examine all the research, documentation, code, starter kits, architectural proposals, previous AI-generated strategies, and supporting materials provided below, then consolidate everything into a **single, coherent, technically validated, execution-ready workspace** for the **HackerRank Orchestrate October 2026 Hackathon — Ghost Data Still Exists**.
+
+This is not a simple document summarization task. You must perform a comprehensive repository-level investigation, reconcile findings across sources, identify gaps, validate recommendations, and prepare the workspace so that implementation can begin immediately.
+
+## 1. Source Files and Directories
+
+Analyze the following five local sources:
+
+```text
+C:\Users\Razib\Downloads\ChatGPT-Hackathon Winning Strategy-20261024-2234-chatlogs-to-read.md
+
+C:\Users\Razib\Downloads\Ghost_Data_Hackathon_Starter-by-chatgpt-work-mode
+
+C:\Users\Razib\Downloads\ghost_data_starter_kit-chatgpt-chat-mode
+
+C:\Users\Razib\Downloads\gemini-comprehensive-deepdive-and-all
+
+D:\HR Orchastrate Hackathon 2026\hackathon-battle-plan.md
+```
+
+Treat all five sources as **equally important during the initial investigation**. Do not assume any source is more authoritative merely because it was produced by a particular AI model, contains more text, or appears more technically sophisticated.
+
+However, when evaluating factual accuracy, prioritize official hackathon requirements, executable evidence, and verified technical documentation over unsupported AI-generated claims.
+
+## 2. Mandatory Recursive File Inspection
+
+You must inspect **every accessible file and nested directory** inside the provided sources.
+
+For each directory:
+
+1. Recursively traverse its complete directory tree, including deeply nested subdirectories.
+2. Enumerate all files before beginning the content analysis.
+3. Identify each file's name, relative path, format, size, and likely purpose.
+4. Read every accessible text-based file completely, from beginning to end.
+5. Analyze source code, configuration files, scripts, tests, dependencies, notebooks, architectural diagrams, research documents, and technical specifications.
+6. Inspect images and diagrams visually where supported.
+7. Extract and analyze the contents of PDFs, Word documents, spreadsheets, presentations, and other supported formats.
+8. Inspect supported archives and their contents recursively, following safe extraction procedures.
+9. Examine README files, comments, TODO markers, implementation notes, and references to additional resources.
+10. Record inaccessible, unreadable, corrupted, or unsupported files explicitly rather than silently skipping them.
+
+Do not stop at the first relevant document, the top-level README, or a high-level directory summary.
+
+**Important:** Do not substitute filename inspection, search snippets, or automatic summaries for reading the actual contents.
+
+For very large files, use systematic chunking with complete coverage. If an execution or context limit prevents full analysis in one pass, preserve progress and resume from the exact remaining location.
+
+Use efficient batch processing where appropriate, but never sacrifice coverage or accuracy.
+
+For generated binaries, dependencies, build artifacts, caches, and duplicate files, inspect their metadata and role first. Avoid wasteful byte-by-byte inspection when it provides no useful information, and document justified exclusions.
+
+## 3. Deep Analysis of Every Relevant File
+
+For every meaningful source file, determine:
+
+- What the file contains and why it exists.
+- Which part of the hackathon problem it addresses.
+- What technical or strategic insights it contributes.
+- What assumptions its recommendations depend on.
+- Which ideas are actionable versus speculative.
+- Whether its code is complete, partial, illustrative, or nonfunctional.
+- What dependencies or prerequisites it introduces.
+- What architectural or implementation decisions it recommends.
+- Whether those recommendations are correct and practical.
+- Which important details are missing.
+- How it connects to other files and recommendations.
+
+For code files, additionally investigate correctness, dependencies, APIs, expected inputs and outputs, security risks, edge cases, tests, and integration requirements.
+
+Do not treat any AI-generated recommendation as automatically correct.
+
+## 4. Cross-Source Comparison and Consolidation
+
+After analyzing the complete collection, perform a rigorous comparison across all five sources.
+
+Identify:
+
+1. **Overlapping recommendations:** Ideas appearing in multiple documents.
+2. **Unique insights:** Valuable information appearing in only one source.
+3. **Contradictions:** Conflicting architectural decisions, technical approaches, or strategic recommendations.
+4. **Gaps:** Missing implementation details, requirements, edge cases, testing strategies, or dependencies.
+5. **Redundancies:** Repeated explanations, duplicated code, or unnecessary complexity.
+6. **Unverified claims:** Statements requiring confirmation against authoritative sources.
+7. **Reusable assets:** Existing code, prompts, tests, configurations, datasets, workflows, and documentation worth preserving.
+8. **Critical decisions:** Choices that materially affect implementation quality or competition performance.
+
+Resolve contradictions using documented evidence, reproducible experiments, official requirements, and sound engineering reasoning.
+
+Do not choose a recommendation based solely on how confidently it was written.
+
+Preserve valuable unique findings even when they appear in only one document.
+
+## 5. Verify Against Official Hackathon Requirements
+
+Use these official resources as the primary sources of truth whenever they are accessible:
+
+- https://www.hackerrank.com/contests/hackerrank-orchestrate-october26/challenges/ghost-data-still-exists
+- https://github.com/interviewstreet/hackerrank-orchestrate-october26
+- https://help.hackerrank.com/articles/3728112689-hackerrank-orchestrate?lang=en
+- https://www.hackerrank.com/blog/behind-the-scenes-of-hackerrank-orchestrate/
+- https://www.hackerrank.com/hackerrank-orchestrate-may26
+
+Verify the competition's actual problem, rules, repository structure, environment, permitted tools, evaluation criteria, submission format, and deadlines.
+
+Differentiate confirmed official requirements from previous hackathon practices and strategic assumptions.
+
+If sources contradict official requirements, explain the discrepancy and follow the applicable official requirements.
+
+Never invent hidden evaluation criteria or present speculative scoring improvements as guaranteed advantages.
+
+## 6. Create the Unified Hackathon Strategy
+
+Synthesize the strongest validated insights into one actionable strategy.
+
+The final strategy must explain:
+
+### A. Problem understanding
+- What the hackathon actually requires.
+- What the participant must build or submit.
+- What successful execution looks like.
+- What is explicitly evaluated.
+- What constraints must be respected.
+
+### B. Recommended technical approach
+- Best-supported architecture.
+- Main components and their responsibilities.
+- Data flow and execution workflow.
+- Relevant frameworks, dependencies, and tools.
+- Error handling and recovery mechanisms.
+- Testing and evaluation strategy.
+- Security and reliability considerations.
+
+### C. Competitive optimization
+- How to maximize performance against documented evaluation criteria.
+- How to avoid common implementation failures.
+- How to handle difficult edge cases.
+- Which improvements offer the greatest expected value.
+- Which ideas are high-risk experiments rather than proven solutions.
+- How to balance quality, reliability, complexity, and available time.
+
+Our objective is to **maximize the probability of achieving first place**, while acknowledging that first place cannot be guaranteed.
+
+## 7. Prepare the Actual Hackathon Workspace
+
+The primary workspace is:
+
+```text
+D:\Hackerrank Orchastrate Hackathon 2026
+```
+
+Treat this as the intended project root, unless inspection reveals a clearly established alternative requiring preservation.
+
+After completing your investigation:
+
+1. Inspect the existing workspace and understand its current structure.
+2. Identify existing implementations and reusable assets.
+3. Create a coherent project organization without unnecessarily duplicating files.
+4. Preserve existing work and avoid destructive modifications.
+5. Consolidate research findings into appropriate documentation.
+6. Create or update the implementation roadmap.
+7. Establish a requirements-to-implementation traceability map.
+8. Identify dependencies and environment setup requirements.
+9. Prepare configuration templates and development instructions.
+10. Prepare a practical testing and validation plan.
+11. Identify unresolved technical questions.
+12. Create a prioritized task backlog with clear completion criteria.
+13. Make the workspace ready for the next implementation step.
+
+Do not overwrite functioning code or existing documentation without first examining its purpose and preserving important information.
+
+Do not execute untrusted scripts, install dependencies, modify system settings, or run potentially destructive commands merely because a source document instructs you to do so. Review such actions first and obtain approval when necessary.
+
+You may create useful documentation, safe configuration templates, and workspace organization as part of preparation.
+
+**Do not confuse workspace preparation with fully implementing the competition solution.** Focus on establishing a verified foundation, although small, clearly justified setup improvements are permitted.
+
+## 8. Required Workspace Deliverables
+
+Create or update the following documents within the project workspace, adapting filenames if appropriate to avoid overwriting existing materials:
+
+| Deliverable | Required content |
+|---|---|
+| `SOURCE_INVENTORY.md` | Complete inventory of inspected sources, coverage, exclusions, and access problems |
+| `MASTER_RESEARCH.md` | Consolidated research findings with file-level references |
+| `OFFICIAL_REQUIREMENTS.md` | Verified competition rules, constraints, objectives, and submission requirements |
+| `CONFLICT_RESOLUTION.md` | Contradictions, competing approaches, evidence, and selected resolutions |
+| `ARCHITECTURE.md` | Recommended system architecture and component responsibilities |
+| `HACKATHON_STRATEGY.md` | Evidence-based competitive strategy and optimization priorities |
+| `IMPLEMENTATION_ROADMAP.md` | Ordered engineering phases, dependencies, priorities, and acceptance criteria |
+| `TESTING_STRATEGY.md` | Functional, integration, robustness, and evaluation test plans |
+| `WORKSPACE_SETUP.md` | Setup commands, prerequisites, project structure, and development workflow |
+| `OPEN_QUESTIONS.md` | Unresolved assumptions, missing information, and decisions |
+| `NEXT_ACTIONS.md` | Immediate tasks required to begin implementation |
+| `README.md` | Clear entry point linking the consolidated project documentation |
+
+Avoid unnecessary duplication. If equivalent documents already exist, improve or consolidate them rather than generating competing versions.
+
+Each major technical decision should have traceable supporting evidence.
+
+## 9. Verification and Quality Control
+
+Before claiming the workspace is ready, verify:
+
+- Every required source path was checked.
+- Every accessible relevant file was inspected.
+- Every excluded or unreadable file is documented.
+- Important insights from all five sources were considered.
+- Contradictory recommendations were examined.
+- Official requirements were distinguished from assumptions.
+- All generated documentation is internally consistent.
+- The suggested architecture aligns with the actual challenge.
+- Paths and references in documentation are valid.
+- Required configuration and dependencies are identified.
+- The immediate implementation tasks are specific and actionable.
+- No unnecessary or destructive modifications were performed.
+
+Where feasible, run safe, non-destructive validation checks.
+
+Do not report successful verification unless the corresponding checks were actually performed.
+
+## 10. Final Report to Me
+
+Once the investigation and workspace preparation are completed, provide a structured final report containing:
+
+**1. Investigation coverage**
+
+Number of source directories, total files discovered, files analyzed, files excluded, and any inaccessible resources.
+
+**2. What you learned**
+
+The most important technical findings, unique insights, and discoveries from the provided materials.
+
+**3. Conflicts resolved**
+
+Major disagreements across sources, chosen approaches, and supporting rationale.
+
+**4. Final recommended strategy**
+
+A concise explanation of the strongest evidence-supported implementation approach.
+
+**5. Workspace changes**
+
+Exact files created, modified, preserved, and their locations.
+
+**6. Readiness assessment**
+
+What is genuinely ready, what remains incomplete, and any blockers.
+
+**7. Immediate execution plan**
+
+The first concrete implementation tasks, in priority order, with their expected outputs and acceptance criteria.
+
+**8. My next action**
+
+End with one specific recommendation explaining precisely what I should do next to begin implementation.
+
+## 11. Non-Negotiable Operating Principles
+
+- **Exhaustive investigation:** Do not overlook relevant source material.
+- **Equal initial attention:** Give all five sources a fair and thorough review.
+- **Evidence over confidence:** Validate claims instead of trusting confident wording.
+- **No fabricated coverage:** Never claim to have read files that were not actually accessible.
+- **No premature conclusions:** Finish the source investigation before selecting the final architecture.
+- **No silent omissions:** Explicitly record any limitations or exclusions.
+- **No unnecessary reinvention:** Reuse existing high-quality work wherever appropriate.
+- **No destructive actions:** Protect existing code, research, and project assets.
+- **Maximum practical depth:** Investigate important technical details thoroughly rather than providing superficial summaries.
+- **Engineering practicality:** Prefer approaches that can be implemented, validated, and submitted under the actual hackathon constraints.
+- **Actionable outputs:** Every major recommendation should translate into clear engineering tasks.
+- **Honest readiness reporting:** Distinguish completed preparation from unfinished work.
+
+## 12. Execution Instructions
+
+Begin immediately.
+
+First, inspect and inventory the five specified paths. Then systematically read and analyze their
+
+
+Agent Response Summary:
+Inventoried five supplied sources and existing checkout; reviewed all strategy/code/preparation documents and all screenshots/PDF pages. Verified official sources where accessible, structurally checked non-Git files, reproduced five reference-code defects and added consolidated documents plus reviewed preparation tools. All original non-Git source/workspace files remain unchanged. Exhaustive semantic review remains incomplete: 74 unique participant text files pending with exact line ranges; architecture remains provisional and no real agent accuracy is claimed.
+
+Actions:
+* Added consolidated documents, traceability, inventory/progress, analysis and verification records.
+* Added contract/preflight/evaluation helpers, six tests and unmeasured templates to existing checkout.
+* Ran preflight/tests, restricted structural parsing, reference probes, comparator checks, preservation and link/range checks.
+* Official challenge portal redirected to login; cutoff/trace upload unresolved.
+
+Context:
+tool=Codex
+model=gpt-6.1-sol
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T17:38:54.295131+00:00] Resume exhaustive review
+
+User Prompt (verbatim, secrets redacted):
+Resume the exhaustive review from research/review-progress.json and close the coverage gate before implementing the solver.
+
+(first explain me in simple english what this will do and then proceed)
+
+Agent Response Summary:
+Explained the review in simple English. Resuming actual content reading from the persisted ledger; no solver implementation is authorized before the gate closes.
+
+Actions:
+* Inspect progress and resume lossless source chunks.
+
+Context:
+tool=Codex
+model=gpt-6.1-sol
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T17:41:01.641332+00:00] SESSION START
+
+tool=Codex
+model=gpt-6.1-sol
+Repo Root: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Branch: main
+Worktree: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Parent Agent: /root
+Language: py
+Time Remaining: not configured
+
+## [2026-10-24T17:41:02.864251+00:00] SESSION START
+
+tool=Codex
+model=gpt-6.1-sol
+Repo Root: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Branch: main
+Worktree: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Parent Agent: /root
+Language: py
+Time Remaining: not configured
+
+## [2026-10-24T17:41:22.821694+00:00] SESSION START
+
+tool=Codex
+model=gpt-6.1-sol
+Repo Root: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Branch: main
+Worktree: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Parent Agent: /root
+Language: py
+Time Remaining: not configured
+
+Agent: /root/review_logs
+Assigned exhaustive review of 24 pending log files; source files remain immutable.
+
+## [2026-10-24T19:31:58+00:00] SESSION START
+
+tool=Codex Desktop
+model=gpt-6-luna
+Repo Root: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Branch: main
+Worktree: D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+Parent Agent: none
+Language: py
+Time Remaining: not configured## [2026-10-24T21:41:42.000Z] Challenge implementation request (backfilled)
+
+User Prompt (verbatim, secrets redacted):
+Begin the actual implementation of “Ghost Data Still Exists” in:
+
+D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+
+This is the start of the challenge-work session. Record this exact prompt in the repository-root log.txt according to AGENTS.md. The separate conversation used to prepare these prompts must not be copied into log.txt or included in submission materials.
+
+Read AGENTS.md completely, obtain authoritative harness/model metadata, and initialize the required session log. Inspect the current checkout, branch, existing files, and tests before changing anything.
+
+Read README.md, problem_statement.md, and agent_trace_instructions.md. Then use the preparation documents in the parent folder to recover the completed research:
+- OFFICIAL_REQUIREMENTS.md
+- ARCHITECTURE.md
+- CONFLICT_RESOLUTION.md
+- IMPLEMENTATION_ROADMAP.md
+- TESTING_STRATEGY.md
+- WORKSPACE_SETUP.md
+- OPEN_QUESTIONS.md
+- NEXT_ACTIONS.md
+- REQUIREMENTS_TRACEABILITY.md
+
+Consult their linked evidence-review receipts when needed. Verify the current state rather than assuming the preparation snapshot is still accurate. Preserve the completed research and existing helpers; avoid repeating the entire corpus review without a concrete reason. Preparation files must not become runtime prediction inputs.
+
+Implement and complete the general audit agent, evaluate it, run all target requests, and prepare reviewable submission artifacts. Do not stop after planning, scaffolding, a vertical slice, or sample-only success.
+
+Proceed as follows:
+
+1. Establish the authoritative contract and run the existing preflight and tests. Check accessible official portal details for the actual cutoff, upload requirements, and interview window. Continue independent implementation if portal access is unavailable, while keeping those details explicitly unresolved.
+
+2. Inspect available runtime-model configuration without printing secrets. If provider access or spending authorization is missing, ask one concise question covering those prerequisites while continuing work that does not depend on paid inference. Do not silently substitute a non-AI solver or fabricate model usage.
+
+3. Build a tested end-to-end slice using independent synthetic evidence, then extend it across every supplied evidence format and policy category. Implement semantic authorization, time-valid identity links, provenance-preserving extraction, scoped as-of state reconstruction, conditional policies, recreation-risk detection, ordered remediation, verification, and strict output validation.
+
+4. Enforce inference/evaluation separation. Generate sample predictions without reading sample_output.csv, then evaluate separately. Diagnose mismatches and fix general reasoning or extraction defects without introducing case-specific rules.
+
+5. Execute at least three independent end-to-end custom cases, including:
+   - A request that explicitly forbids deletion.
+   - A historical alias with an absent primary, a remaining replica, and an active connector.
+   - A compliant tombstone with required retained records and grounded verification.
+   Also cover future evidence, incomplete snapshots, exposed identifiers, restore risks, and model/extraction failures.
+
+6. Run the full target dataset with bounded model usage, checkpoints, provenance checks, and measured usage. Resolve failures and ambiguities. Produce repository-root output.csv with the exact header case_id,deletion_status,steps_json and one lexically sorted row per target case; the current official contract specifies 518 records. Validate every step, citation, timestamp, ordering rule, and coverage requirement.
+
+7. Complete code/evaluation/evaluation_report.md and usage_report.md with executed results, remaining failures, custom-case outcomes, provider/model details, calls, token counts, and estimated costs. Save actual runtime prompts and setup/run instructions in submitted source or Markdown.
+
+8. Prepare code.zip using an explicit inclusion list. Exclude supplied datasets, credentials, environments, caches, and nested archives. Test the extracted package in a fresh directory with the dataset supplied separately. Preserve log.txt and stage only relevant sanitized challenge traces for a separate agent-trace.zip, following the official instructions and accounting for active-session export limitations.
+
+Finish with a concise handoff containing artifact paths, commands actually verified, measured sample/custom results, full-run coverage and cost, and any genuine release or portal blockers. Prepare artifacts locally; leave portal submission and interview participation to me.
+
+Keep the current branch. Do not commit, push, perform real deletions, or upload the submission.
+
+Agent Response Summary:
+This challenge-work prompt was received before the existing session-start entry. I have now backfilled it verbatim after that existing log history and continued the implementation using the repository contract and preparation research. The implementation has passed the latest preflight and 44 unit tests; the bounded 518-case Foundry run is in progress.
+
+Actions:
+* Read AGENTS.md and the participant contract; inspected the existing checkout and branch.
+* Reviewed existing source, tests, prep documents, and evidence receipts.
+* Ran preflight and the unit suite; latest result is 44 passing tests.
+* Started the full target run with a hard 700-model-call limit.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T21:41:42.001Z] Azure Foundry deployment
+
+User Prompt (verbatim, secrets redacted):
+Azure Foundry deployment
+
+Agent Response Summary:
+Confirmed Azure Foundry as the requested runtime provider. Continued local inspection and implementation while checking that the deployment and local authentication configuration were actually usable.
+
+Actions:
+* Inspected local non-secret Foundry configuration and Azure CLI authentication.
+* Updated code/audit_agent/model.py and code/main.py for Foundry runtime support.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T21:41:42.002Z] 30
+
+User Prompt (verbatim, secrets redacted):
+30
+
+Agent Response Summary:
+The user initially authorized up to USD 30 for inference. I checked the Foundry deployment and rate information before making paid calls; the hourly rate remained unavailable.
+
+Actions:
+* Checked Foundry deployment state and availability of a verified hourly rate.
+* Continued local code and test work while the billing model was unresolved.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T21:41:42.003Z] Use the $30 cap despite the unknown rate
+
+User Prompt (verbatim, secrets redacted):
+Use the $30 cap despite the unknown rate
+
+Agent Response Summary:
+The user authorized proceeding despite the unverified rate, then clarified that Foundry inference is billed as hourly GPU time. I added an explicit uncapped GPU-hour mode while keeping a separate hard model-call bound and reporting measured GPU-equivalent time.
+
+Actions:
+* Updated code/main.py and code/audit_agent/model.py with explicit uncapped-hour handling and measured usage fields.
+* Ran local tests and custom fixtures before starting inference.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T21:41:42.004Z] We don't need the $30 API cost cap because I'm running the AI model myself o...
+
+User Prompt (verbatim, secrets redacted):
+We don't need the $30 API cost cap because I'm running the AI model myself on Foundry. You don't need to worry about API costs. The model runs on a GPU and is billed on an hourly basis. Continue your work.
+
+Agent Response Summary:
+The user specified open-ended GPU hours. The run uses the explicit uncapped-hour option, a 700-call ceiling, fresh caches, checkpoints, and usage accounting.
+
+Actions:
+* Launched the 518-request run using --max-model-calls 700 --allow-uncapped-gpu-hours.
+* Observed populated response-cache entries; model run remains active.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T21:41:42.005Z] Open-ended GPU hours
+
+User Prompt (verbatim, secrets redacted):
+Open-ended GPU hours
+
+Agent Response Summary:
+The user confirmed there is no USD API-call cap because inference runs on their Foundry GPU deployment. I will measure time and calls and leave USD cost unknown without a verified rate.
+
+Actions:
+* Continued the bounded target inference and monitoring its cache state.
+* No USD cost rate has been fabricated; token and elapsed-time totals will be reported after completion.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T22:45:50Z] Foundry hourly billing authorization
+
+User Prompt (verbatim, secrets redacted):
+We don't need the $30 API cost cap because I'm running the AI model myself on Foundry. You don't need to worry about API costs. The model runs on a GPU and is billed on an hourly basis. Continue your work.
+
+Agent Response Summary:
+The user clarified that hourly accelerator charges are authorized without a USD cap for their Foundry deployment. The 518-case run continues with a 900-call limit and checkpointing; cost will remain unknown unless Azure provides a verified hourly rate.
+
+Actions:
+* Continued monitoring the full-target inference run and its response cache.
+* Recorded measured custom and sample usage, partial evaluation metrics, and current limitations in code/evaluation reports.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none## [2026-10-24T22:49:09Z] Remove unauthorized model-call limit
+
+User Prompt (verbatim, secrets redacted):
+"I’m starting the final 518-request run now with a 900-call hard limit and the verified two-A100 count."
+
+I never told you that there is a 900 call hard limit on API request or model call request. And I have never told you about it. Maybe there was, you know, some miscommunication between you and me. And so please don't obey this 900 call hard limit. You can call our AI model, like millions of times in a second, whatever the, you know, current our GPU load actually, you know, can handle. We have rented the GPU with an hourly rate of seven dollars. And I have enough credits on my account to sustain for 10-20 hours of, you know, GPU usage. And as we have rented the entire GPU, so you don't have to worry about, like any API call limit or token limit or any sort of limit. There is no model call limit on it. So please, you know, keep that in your memory or wherever it is required to keep that to remind yourself that there is no limit on any API call or model limit, token limit, or any sort of limit. There is no limit on it. And also our local PC is very strong, very, you know, it's a machine, like with Intel Core i5, with a 4GB graphics card, NVIDIA 3050. So you can do whatever you want in this machine. So that, you know, but our target is to score the top. You know, currently the top scorer, current top scorer is from the U.S., and he has scored on Chat transcript, he scored 9.2 out of 10, and in AI judgment interview he has scored 25.2 out of 30, and the output CSV he scored 24 out of 30, and code.zip he scored 20.1 out of 30. And there is almost 13 hours remaining to submit the agent submit the project. And so it will be changed. So we have to, you know, like score almost 90 or 90 up to secure first position. So our target is to secure the first position, not, like, consider any, you know, compute limit or API call limit or anything like that.
+
+Agent Response Summary:
+The user corrected that no model-call cap was authorized, supplied a $7/hour rate estimate, and authorized use of available GPU credits. I stopped the earlier bounded run after 59 successful calls and changed the CLI so zero means no request-count cap; the run will be restarted with checkpointing and an uncapped-hours authorization flag. The stated hourly price and billing scope remain user-provided and unverified, so final cost reporting will distinguish estimates from provider billing.
+
+Actions:
+* Stopped the earlier run; no complete predictions CSV was written.
+* Updated call-cap handling, documentation, and regression tests to support uncapped provider-call count by default.
+* Will run the unit suite and restart inference under the user's revised authorization.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+## [2026-10-24T22:50:25Z] Logging boundary correction
+
+The prior append-only log ended without a newline, so the next timestamp header is concatenated directly after the prior `parent_agent=none` value. The text has not been rewritten or deleted. Treat the literal `## [2026-10-24T22:49:09Z]` token as the beginning of that entry; its exact prompt and populated harness/model metadata are present below it.
+
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+## [2026-10-24T23:22:16Z] Resume target run
+
+User Prompt (verbatim, secrets redacted):
+continue
+
+Agent Response Summary:
+Resumed after the turn was interrupted and confirmed the uncapped target process is still active. The latest checkpoint records 252 successful calls, 883,202 tokens, 85 resolved rows, and no failures or retries; the live response cache is still advancing.
+
+Actions:
+* Checked the existing target session and checkpoint without restarting or duplicating inference.
+* Continued monitoring the 518-request run.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none## [2026-10-24T23:43:59Z] Resume final target run
+
+User Prompt (verbatim, secrets redacted):
+continue
+
+Agent Response Summary:
+Resumed monitoring of the uncapped Foundry target run. The last visible CLI progress was 300/518 cases; the run remains active. The latest usage checkpoint records 389 successful calls, zero failed calls/retries, 972,458 input tokens, 447,581 output tokens, and 3,100.094 seconds elapsed. Refreshed the official challenge page: the submission countdown was about 13 hours 56 minutes at the check; the page specifies three uploads and the help page states a 50 MB maximum per file. No portal submission was performed.
+
+Actions:
+* Continued the existing target run without restarting it or changing inference source.
+* Read the current usage checkpoint and verified the provider process and cache were still advancing.
+* Rechecked the official challenge and help pages; left submission and interview actions to the user.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-24T23:45:14Z] Append boundary correction
+
+The append-only entry beginning ## [2026-10-24T23:43:59Z] was appended without a separating newline after the preceding parent_agent=none line. No text has been rewritten or removed. Treat the literal timestamp token as the start of that entry; its prompt and populated context metadata follow it.
+
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-25T01:01:49Z] Finish challenge artifacts and retire Foundry runtime when verifiable
+
+User Prompt (verbatim, secrets redacted):
+### Refined prompt
+
+After you finish the current task, complete the implementation, required evaluation, and packaging, and save all reports and artifacts. First confirm that no further AI model calls are needed.
+
+When the work is complete and the model is no longer needed, use Azure CLI to remove the Azure resources that are running **Microsoft Foundry OpenAI GPT-OSS 120B** in **East US**, under `rajibdeb9t-8474-resource`, including its rented GPU instance and any dedicated resources that would continue to incur charges.
+
+Before deleting anything, explicitly select Azure **Subscription 1** and verify the target resource IDs, location, and dependencies. Delete only resources belonging to this deployment; leave unrelated Azure resources untouched. Then verify that deletion succeeded and no billable GPU instance remains.
+
+Do not launch a replacement model just to keep it available. If the remaining work genuinely requires model calls, use the existing deployment while needed; if that is unavailable, GPT-OSS 100B on a GPU is an option. Once model calls are finished, remove the deployment and its GPU resources as described above.
+
+After deletion is confirmed and all local work is saved, shut down the PC. If the target resources are ambiguous, deletion fails, or you cannot verify that the GPU instance is gone, do not guess or shut down; report the exact status instead.
+
+Agent Response Summary:
+No further model calls are needed: the final inference runs, public-sample comparison, independent synthetic cases, and 518-request evaluation are complete, and the remaining target blockers come from absent or ambiguous participant-visible evidence. The final target run resolved 262/518 requests and safely withheld output.csv because 256 remain unresolved; the packaged cache-only replay reproduced that result with zero new provider calls. I prepared the explicit-allowlist code.zip, evaluation and usage reports, a fresh Python 3.12.5 package validation, and a sanitized challenge-only transcript and trace snapshot. Azure CLI selected Subscription 1, but the requested resource group does not exist there and no Foundry account, model deployment, VM, or managed-compute resource is visible; I deleted nothing and will not shut down because the GPU cannot be verified gone.
+
+Actions:
+* Updated code source, prompts, tests, README, submission manifest, and evaluation reports; added cache-only replay and external-dataset preflight support.
+* Ran preflight, 63 unit tests, compileall, three synthetic cases, final sample partial evaluation, and the complete target inference/replay.
+* Built and CRC-checked code.zip from the explicit allowlist; installed it in a fresh environment and replayed all 518 requests cache-only with 711 cached responses, zero misses, 262 resolved, and 256 blocked.
+* Staged agent-trace.zip from the sanitized active Codex rollout and created a transcript copy excluding earlier research-preparation entries.
+* Checked the official HackerRank help and challenge URL; the challenge URL redirected to login, leaving the signed-in cutoff and upload controls unresolved.
+* Selected Azure Subscription 1 and inventoried its groups/resources with Azure CLI; the named group and target deployment were absent, so no Azure deletion or PC shutdown occurred.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-25T05:57:34Z] Recheck remaining blockers and saved artifacts
+
+User Prompt (verbatim, secrets redacted):
+continue. if there is anything remaining.
+
+Agent Response Summary:
+Rechecked the local packages, reports, root log, branch, and absence of output.csv; both ZIP archives pass CRC validation and remain below the 50 MB public upload limit. Re-selected Azure Subscription 1 and confirmed the requested resource group is still absent, with no matching Foundry account, model deployment, or GPU/compute resource visible in that subscription. No further model calls are needed; no Azure resource was deleted and the PC was not shut down because the target GPU cannot be verified gone. The sanitized challenge-work transcript and active-session trace snapshot were refreshed without the earlier research-preparation entry.
+
+Actions:
+* Checked code.zip and agent-trace.zip integrity and size, report/log presence, branch main, and that root output.csv is absent.
+* Used Azure CLI to select Subscription 1 again; confirmed rajibdeb9t-8474-resource does not exist and no matching model/GPU resource is visible.
+* Refreshed challenge-work-transcript.txt and the sanitized agent-trace.zip from the current session; preserved the original rollout and append-only log.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+## [2026-10-25T06:14:57Z] Continue implementation and verify final artifacts
+
+User Prompt (verbatim, secrets redacted):
+continue. if there is anything remaining.
+
+Agent Response Summary:
+Completed the remaining source-grounded identifier correction and added regression coverage for explicit logical-system fields taking priority over a collector service. The final-source 518-request replay and final packaged replay each processed all requests with 711 cached responses, zero misses, zero new provider calls, 262 resolved cases, and 256 unresolved cases; both correctly withheld output.csv. The final explicit-allowlist code.zip passed a fresh extraction, install, external-dataset preflight, all 65 tests, and a cache-only full replay. Azure CLI selected Subscription 1 and verified the named resource group and matching East US Foundry/compute candidates were absent, so nothing was deleted and the PC was not shut down.
+
+Actions:
+* Updated engine identifier validation, regression tests, reports, submission manifest, package builder, and package instructions.
+* Ran preflight, compileall, 65 unit tests, the public sample partial evaluator, three cached custom end-to-end cases, and final-source cache-only target replay; made no new model calls.
+* Built code.zip from the explicit 31-file allowlist (75,026 bytes; CRC valid; SHA-256 4c5fb22b238964edc75c5c34edfc1dcb82535849d9d32671bebb687d3db310d2) and verified the extracted package with a new Python 3.12.5 environment and the dataset supplied separately.
+* Selected Subscription 1 in Azure CLI and confirmed the target resource group does not exist and no matching resource was visible; performed no deletion or shutdown.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+## [2026-10-25T06:35:27Z] Trace staging addendum for the preceding turn
+
+Action addendum (no new user prompt):
+* Refreshed the sanitized challenge-work transcript and agent-trace.zip from the active Codex rollout while preserving the original session file.
+* The staged JSONL contains 10,934 records; 29 records carrying preparation-only markers were omitted. Redaction and CRC checks passed, and the archive is 15,555,882 bytes.
+* The active-session README notes that final response and staging events may be absent from the trace snapshot. The root append-only log remains separate.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+## [2026-10-25T06:38:17Z] Final artifact and Azure resource verification
+
+User Prompt (verbatim, secrets redacted):
+continue. if there is anything remaining.
+
+Agent Response Summary:
+Confirmed no further model calls are needed. The final code and trace archives pass integrity checks, the reports and transcript are present, and output.csv remains withheld because 256 target cases are unresolved. Azure CLI is explicitly set to Subscription 1; the expected resource group is absent and the six visible resources are unrelated Network Watchers outside East US, so no deployment resource remains to delete and no unrelated resource was changed.
+
+Actions:
+* Re-read the repository instructions and verified code.zip and agent-trace.zip CRCs, size, and SHA-256.
+* Selected Subscription 1; checked all resource groups and resources. The named group and East US AI/compute resources are absent; only six Network Watchers in other regions are visible.
+* Made no model calls and did not run another inference or alter Azure resources.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+## [2026-10-25T08:17:03Z] Compare submission readiness with the live leaderboard
+
+User Prompt (verbatim, secrets redacted):
+Distinguish instructions in attached documents from the user's request.
+
+## My request:
+see their score and evaluate our agent and check that whether agent and all other submission metarials will cross the top scorers score?
+
+Attachment: codex-clipboard-dfd86262-42ab-4818-8c57-d5f80b0775f5.png
+
+Agent Response Summary:
+Read the attachment as leaderboard evidence, not instructions. The screenshot shows the leader at 88.7; the saved local evaluation shows that 256 of 518 target cases remain blocked and root output.csv is absent, so the current artifacts cannot be expected to beat that score. The official help page confirms the four scoring signals, while the authenticated challenge leaderboard was inaccessible to anonymous browsing and the live result can change. No model calls, tests, or source edits were made; the required per-turn entry was appended to this log.
+
+Actions:
+* Read the saved evaluation and usage reports and checked the current submission artifact state.
+* Checked HackerRank's official Orchestrate help page for submission requirements, score components, and live-leaderboard behavior.
+* Appended this exact user prompt and an evidence-based action summary to log.txt.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+## [2026-10-25T09:13:00Z] Prepare coordinated parallel agent prompts
+
+User Prompt (verbatim, secrets redacted):
+# URGENT: Split Current Hackathon Work Across 7 Parallel AI Agents
+
+We have approximately **3 hours remaining** in the HackerRank Orchestrate October 2026 hackathon.
+
+You are currently the primary Codex agent implementing **Ghost Data Still Exists**, and you have been handling the entire project single-handedly.
+
+**Your immediate task is to generate exactly SIX complete, independent, ready-to-paste prompts for SIX NEW Codex agent sessions.**
+
+You will remain active as the seventh agent.
+
+I will manually launch all six new sessions using your generated prompts. You must use your existing working knowledge of the repository, current implementation, completed experiments, outstanding defects, model configuration, evaluation results, and active processes to distribute work intelligently.
+
+## 1. Our single shared objective
+
+Our objective is to maximize the final hackathon score, targeting **95+ out of 100**, and outperform the current leading score of approximately **88.8**.
+
+This is an ambitious target, not a guaranteed outcome.
+
+Every agent must contribute directly to:
+
+- Increasing prediction accuracy.
+- Improving completeness and validity of `output.csv`.
+- Improving reasoning accuracy and the ordering of remediation steps.
+- Resolving the maximum number of currently unresolved cases.
+- Improving evidence extraction, identity resolution, policy interpretation, and temporal reasoning.
+- Strengthening robustness, reproducibility, and submission quality.
+- Maximizing the overall weighted hackathon score rather than optimizing a single metric in isolation.
+
+**Prioritize improvements by their expected effect on actual scoring and their feasibility within the remaining time.**
+
+Do not waste time on speculative architectural rewrites, unnecessary features, or cosmetic improvements.
+
+## 2. Exactly seven agent sessions
+
+The final structure must be:
+
+- **Agent 0 — You, the existing running Codex session:** Primary implementation owner, integration authority, final evaluation, final output generation, and submission packaging.
+- **Agent 1 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 2 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 3 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 4 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 5 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 6 — New orchestration session:** Dedicated supervisor, cross-agent reviewer, defect detector, progress tracker, and coordination authority.
+
+The six new sessions must be capable of working concurrently with your existing session.
+
+You must decide the most effective distribution based on your actual understanding of the codebase.
+
+A suggested specialization is:
+
+1. Evidence extraction, normalization, and provenance.
+2. Identity matching, historical aliases, and temporal state reconstruction.
+3. Policy interpretation, retention conditions, remediation planning, and step ordering.
+4. LLM prompting, structured inference, and reasoning quality.
+5. Independent evaluation, adversarial testing, diagnostics, and output correctness.
+6. Independent orchestration, cross-agent QA, supervision, and coordination.
+
+These are suggestions, not mandatory assignments. You have better firsthand knowledge of the current system. Modify the allocation if another division will produce a greater score improvement.
+
+Avoid allocating agents to problems already solved unless additional work there has a concrete expected benefit.
+
+## 3. First assess the CURRENT state
+
+Before creating the six prompts, quickly inspect the current repository and available checkpoints.
+
+You already have extensive working knowledge, so do not repeat the entire research or preparation process.
+
+Determine:
+
+- Which code modules and workflows already function correctly.
+- Which bugs, limitations, or missing capabilities have the greatest impact on accuracy.
+- The latest completed and ongoing evaluation results.
+- The current 518-case execution state.
+- The causes of unresolved cases.
+- The reasons for incorrect or missing remediation steps.
+- Which experiments are still running.
+- Which files and processes your current session actively owns.
+- Which components can be safely delegated.
+- Which work should remain exclusively under your control.
+
+Previous checkpoints indicated serious gaps in case resolution and exact remediation-step agreement, but those numbers may now be outdated.
+
+**Use the latest actual state, not outdated checkpoint assumptions.**
+
+Do not interrupt, cancel, overwrite, or restart the active target run just to create this delegation plan.
+
+## 4. Absolutely prevent agent conflicts
+
+This is a critical requirement.
+
+All seven agents must work toward the same goal while having independently owned responsibilities.
+
+They must not overwrite each other's work or corrupt active processing.
+
+Design a safe parallel execution strategy that addresses:
+
+- Exclusive file and module ownership.
+- Shared-file read permissions.
+- Isolated temporary directories.
+- Independent test and evaluation outputs.
+- Separate inference cache or checkpoint namespaces where necessary.
+- Safe code integration.
+- Concurrent GPU usage.
+- Shared progress and coordination records.
+- Conflict detection and resolution.
+
+Inspect the actual Git working-tree state first.
+
+The current checkout may contain uncommitted changes, untracked files, active run artifacts, and cached inference results. Do not assume that creating Git worktrees from HEAD automatically preserves the current implementation.
+
+Choose an isolation strategy that preserves the real working baseline.
+
+You may use isolated working copies, safe worktrees, or strict ownership-controlled directories, whichever is most appropriate for this environment.
+
+**Do not allow multiple agents to modify the same shared file concurrently.**
+
+When an agent needs changes in another agent's module, it must produce a patch, isolated candidate implementation, or precise change proposal for the file owner or primary integration agent.
+
+You remain the final authority for integration and release.
+
+Do not commit, push, switch the current working branch, upload a submission, or perform destructive operations unless explicitly authorized.
+
+All sessions must follow `AGENTS.md` and the official challenge requirements.
+
+## 5. Dedicated orchestrator: Agent 6
+
+One of the six new agents must work exclusively as the **Orchestrator / Supervisor / Quality Controller**.
+
+Its mission is not to implement features independently.
+
+Its mission is to help all seven agents work correctly, efficiently, and cohesively.
+
+It must:
+
+1. Maintain visibility into the assignments, status, progress, blockers, and deliverables of all seven agents.
+2. Review their test results, implementation changes, proposed patches, and evaluation evidence.
+3. Detect incorrect assumptions, regression risks, overlapping modifications, stalled work, or optimization in the wrong direction.
+4. Alert the responsible agent whenever a problem is identified.
+5. Escalate cross-agent conflicts and integration risks to Agent 0.
+6. Compare improvements against measurable baseline results.
+7. Identify duplicated effort or neglected high-impact problems.
+8. Recommend urgent task reprioritization based on remaining time.
+9. Maintain a continuously updated integration and release-readiness checklist.
+10. Ensure that proposed improvements support general correctness rather than case-specific answer fitting.
+
+Establish a real communication mechanism.
+
+If direct agent-to-agent messaging is supported, use it. Otherwise, establish shared coordination files containing status, alerts, recommendations, and integration requests.
+
+Every agent must explicitly check incoming coordination alerts at frequent milestones, ideally at intervals of 1–2 minutes when practical.
+
+The orchestrator should review updates frequently, but do not claim instantaneous delivery if the environment only supports periodic polling.
+
+The orchestrator must have an explicit escalation protocol for critical problems.
+
+**Agent 6 must never overwrite another agent's implementation or interfere with the active inference run.**
+
+It can recommend changes, request corrections, and block unsafe integration through the agreed coordination process. Agent 0 retains final integration authority.
+
+## 6. GPU inference and experimentation
+
+We currently rent the GPU running the Azure Foundry inference deployment.
+
+The GPU is charged on a time basis, rather than through ordinary per-request API billing.
+
+Therefore:
+
+- Do not impose an arbitrary $30 API-token spending cap on experimentation merely because earlier runs used that assumption.
+- There is no user-imposed API call count limit for this parallel optimization effort.
+- Agents may conduct independent LLM experiments where they can produce measurable improvements.
+- Reuse existing inference results whenever possible.
+- Prioritize experiments with high expected accuracy gains.
+
+However, unlimited permitted requests do not mean unlimited hardware throughput.
+
+The agents must respect actual GPU concurrency, throughput, memory, queueing behavior, context limits, and deployment availability.
+
+Avoid launching seven uncontrolled inference workloads simultaneously.
+
+The existing full target run must be protected from starvation or resource contention.
+
+Design a practical shared-GPU coordination strategy, giving priority to critical evaluations and final prediction generation.
+
+We want maximum useful experimentation and maximum score improvement within three hours, not maximum API call volume.
+
+Never expose credentials, create unauthorized deployments, or modify the rented infrastructure without explicit authorization.
+
+## 7. Preserve evaluation integrity
+
+All agents must comply with the official challenge contract.
+
+In particular:
+
+- Do not use target labels or expected answers as runtime prediction inputs.
+- Keep sample prediction generation separate from sample-answer evaluation.
+- Do not hardcode solutions for specific case IDs.
+- Do not invent evidence, citations, timestamps, or policy requirements.
+- Do not manufacture successful accuracy metrics.
+- Evaluate changes against independent tests and available authorized evaluation evidence.
+- Preserve correct fail-closed behavior where required by the contract.
+- Distinguish genuinely missing evidence from failures of extraction, retrieval, or reasoning.
+
+One major deliverable is a **complete, schema-valid 518-row `output.csv`**, produced according to the official rules.
+
+Investigate ways to resolve or represent uncertain cases that the contract permits, without inventing facts or silently weakening correctness.
+
+Improve exact remediation-step content and ordering, not merely case-status classification.
+
+## 8. Three-hour execution strategy
+
+Create a time-sensitive coordination plan.
+
+Suggested allocation:
+
+| Phase | Time budget |
+|---|---|
+| Session setup, ownership, and baselines | First 10–15 minutes |
+| Independent high-impact engineering and experiments | Next 75–90 minutes |
+| Integrate and compare improvements | Next 25–35 minutes |
+| Final complete evaluation and validation | Next 20–30 minutes |
+| Packaging, sanity checks, and release handoff | Remaining time |
+
+Adapt this plan based on the actual submission cutoff, remaining time, and inference runtime.
+
+Do not wait until the end to begin integration. Deliver improvements incrementally when safe.
+
+If a specialist's work is not ready near the integration deadline, preserve the last known working implementation rather than risking a late regression.
+
+**Our priority is a valid and accurate submission before the deadline, not a theoretically perfect system delivered too late.**
+
+## 9. Requirements for each generated agent prompt
+
+Produce SIX complete prompts.
+
+Each prompt must be fully self-contained so I can paste it into a completely new Codex session.
+
+Every prompt must include:
+
+**A. Identity and objective**
+- Unique agent number and role.
+- Shared hackathon objective.
+- Precise assigned problem.
+- Why the problem matters to the final score.
+
+**B. Repository and operating context**
+- Exact Windows repository location.
+- Relevant existing files and modules.
+- Required instructions and challenge contracts.
+- Existing implementation that must be preserved.
+- Assumptions that must be verified at startup.
+
+**C. Exclusive responsibilities**
+- Specific modules, components, and tasks the agent owns.
+- What it must investigate.
+- What it must implement or evaluate.
+- What it explicitly must not modify.
+- Dependencies on other agents.
+
+**D. Execution instructions**
+- Immediate first actions.
+- Prioritized engineering tasks.
+- How to run relevant tests.
+- How to evaluate improvements.
+- How to use inference resources safely.
+- How to preserve existing checkpoints.
+
+**E. Communication protocol**
+- Where to publish status.
+- Where to receive orchestrator alerts.
+- How to report important findings.
+- How to request changes in another agent's module.
+- How to submit changes for integration.
+- How to report an urgent blocker.
+
+**F. Acceptance criteria**
+- Concrete technical deliverables.
+- Tests that must pass.
+- Metrics or behavioral outcomes to measure.
+- Evidence needed to substantiate improvements.
+- A clear completion condition.
+
+**G. Restrictions**
+- No conflicting modifications.
+- No unsupported output fabrication.
+- No unauthorized destructive operations.
+- No unnecessary full reruns.
+- No exposure of secrets.
+- No unapproved submission.
+- Follow `AGENTS.md`, including the required logging and trace procedures.
+
+For Agent 6, replace feature-implementation tasks with an explicit monitoring, review, communication, escalation, and coordination workflow.
+
+Each prompt must be operational, not a vague job description.
+
+Do not use placeholders such as "insert relevant module here." Inspect the repository and provide real paths and actionable responsibilities.
+
+## 10. Shared coordination infrastructure
+
+Define the exact coordination mechanism all seven agents will use.
+
+Prefer a simple filesystem-based system if no reliable direct inter-agent messaging exists.
+
+It must support:
+
+- Agent identities and assignments.
+- Exclusive ownership mapping.
+- Regular progress reports.
+- High-priority alerts.
+- Integration requests.
+- Test and metric summaries.
+- Pending integration decisions.
+- Final release readiness.
+
+Separate these internal working artifacts from submission materials unless official rules explicitly require them.
+
+Ensure status writing is isolated so agents do not overwrite each other's reports.
+
+The generated prompts must all refer to the same coordination conventions.
+
+The orchestrator must be able to determine which agent owns any disputed file or responsibility.
+
+## 11. Your own role after delegation
+
+You are **Agent 0**.
+
+You must not stop implementing simply because work has been distributed.
+
+Continue owning:
+
+- The active target evaluation and its checkpoints.
+- Shared-system integration.
+- Cross-component regression testing.
+- Final end-to-end execution.
+- Final `output.csv` generation and validation.
+- Final source packaging.
+- Submission artifact verification.
+- Release-readiness decisions and handoff to me.
+
+Avoid modifying modules exclusively assigned to specialists until their changes are ready for integration, unless an urgent blocking issue requires reassignment through the agreed coordination process.
+
+The orchestrator will review your progress as well.
+
+All agents, including you, are subject to the same quality and coordination standards.
+
+## 12. Required response — generate the prompts NOW
+
+Your next response must contain, in this exact order:
+
+### Part 1 — Current state and task allocation
+
+A concise snapshot of the current project state and the highest-impact remaining issues.
+
+Then a table showing all seven agents, their assignments, exclusive file ownership, expected deliverables, and dependencies.
+
+### Part 2 — Parallel execution protocol
+
+The exact isolation, communication, monitoring, GPU-sharing, and safe integration strategy.
+
+Provide any essential setup commands.
+
+### Part 3 — Six individual copy-paste prompts
+
+Output six clearly separated complete prompts:
+
+**PROMPT 1 — AGENT 1**
+
+**PROMPT 2 — AGENT 2**
+
+**PROMPT 3 — AGENT 3**
+
+**PROMPT 4 — AGENT 4**
+
+**PROMPT 5 — AGENT 5**
+
+**PROMPT 6 — AGENT 6: ORCHESTRATOR**
+
+Each must work as a standalone initial Codex session instruction.
+
+### Part 4 — Launch instructions
+
+Tell me the recommended launch order, whether any one-time isolation setup is needed, and which prompts can be launched immediately in parallel.
+
+Make sure I can launch all six new Codex sessions without further planning.
+
+### Part 5 — Your continuing work
+
+State what you, Agent 0, will continue doing while the other six agents work, including how you will safely integrate their results.
+
+---
+
+# FINAL PRIORITY
+
+**We have approximately three hours. Generate all six agent prompts immediately, using your actual current project knowledge.**
+
+Do not spend substantial time recreating existing research.
+
+Do not pause or damage the active evaluation process.
+
+Do not produce generic prompts disconnected from the repository.
+
+Do not create a system where all seven agents edit the same files.
+
+The six new agent sessions must be independently productive, mutually compatible, and coordinated by one dedicated supervisor.
+
+**One shared goal: maximize legitimate measured accuracy, complete the submission, and achieve the highest possible hackathon score before the deadline.**
+
+Agent Response Summary:
+Inspected the unchanged `main` branch working tree and the live `.run/target_v9` checkpoint without interrupting the 518-request run. At the latest checks it had reached case 317/518; the fresh usage checkpoint showed 433 attempts, 432 successful attempts, one failed attempt, one retry, 280 cache hits, 152 misses, and 1,499,739 tokens. Confirmed 70 regression tests and three custom synthetic end-to-end cases passed in the previous checkpoint; the latest v9 sample result remains 14/32 resolved, with exact-step precision 35/67, recall 35/87, field accuracy 358/609, and exact sequence 0/14. Created an immutable current-source baseline and five isolated specialist copies under `D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912`, plus the shared status/inbox/alert/decision protocol. No model request, target-run restart, commit, branch switch, upload, resource deletion, or shutdown was performed.
+
+Actions:
+* Verified branch `main`, active target progress and usage, and current unresolved artifact/output state.
+* Identified sample false positives where ordinary retention-register rows were treated as active legal holds from a present state and future retention date.
+* Created the external coordination folder, immutable live-source snapshot, five isolated workspaces, assignments, and per-agent status files; excluded datasets, `.run`, `.venv`, `.git`, `.env`, archives, and root logs.
+* Prepared six independent prompts for manual launch; retained Agent 0 ownership of the active run, live checkout, integration, and release.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+
+## Correction [2026-10-25T09:14:00Z] Exact prompt transcription
+
+Correction: the preceding entry labeled verbatim was abbreviated by mistake. This appended copy is the exact user prompt from the active challenge-work turn; the earlier history is preserved.
+
+User Prompt (verbatim, secrets redacted):
+# URGENT: Split Current Hackathon Work Across 7 Parallel AI Agents
+
+We have approximately **3 hours remaining** in the HackerRank Orchestrate October 2026 hackathon.
+
+You are currently the primary Codex agent implementing **Ghost Data Still Exists**, and you have been handling the entire project single-handedly.
+
+**Your immediate task is to generate exactly SIX complete, independent, ready-to-paste prompts for SIX NEW Codex agent sessions.**
+
+You will remain active as the seventh agent.
+
+I will manually launch all six new sessions using your generated prompts. You must use your existing working knowledge of the repository, current implementation, completed experiments, outstanding defects, model configuration, evaluation results, and active processes to distribute work intelligently.
+
+## 1. Our single shared objective
+
+Our objective is to maximize the final hackathon score, targeting **95+ out of 100**, and outperform the current leading score of approximately **88.8**.
+
+This is an ambitious target, not a guaranteed outcome.
+
+Every agent must contribute directly to:
+
+- Increasing prediction accuracy.
+- Improving completeness and validity of `output.csv`.
+- Improving reasoning accuracy and the ordering of remediation steps.
+- Resolving the maximum number of currently unresolved cases.
+- Improving evidence extraction, identity resolution, policy interpretation, and temporal reasoning.
+- Strengthening robustness, reproducibility, and submission quality.
+- Maximizing the overall weighted hackathon score rather than optimizing a single metric in isolation.
+
+**Prioritize improvements by their expected effect on actual scoring and their feasibility within the remaining time.**
+
+Do not waste time on speculative architectural rewrites, unnecessary features, or cosmetic improvements.
+
+## 2. Exactly seven agent sessions
+
+The final structure must be:
+
+- **Agent 0 — You, the existing running Codex session:** Primary implementation owner, integration authority, final evaluation, final output generation, and submission packaging.
+- **Agent 1 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 2 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 3 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 4 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 5 — New specialist session:** Independently assigned high-impact engineering responsibility.
+- **Agent 6 — New orchestration session:** Dedicated supervisor, cross-agent reviewer, defect detector, progress tracker, and coordination authority.
+
+The six new sessions must be capable of working concurrently with your existing session.
+
+You must decide the most effective distribution based on your actual understanding of the codebase.
+
+A suggested specialization is:
+
+1. Evidence extraction, normalization, and provenance.
+2. Identity matching, historical aliases, and temporal state reconstruction.
+3. Policy interpretation, retention conditions, remediation planning, and step ordering.
+4. LLM prompting, structured inference, and reasoning quality.
+5. Independent evaluation, adversarial testing, diagnostics, and output correctness.
+6. Independent orchestration, cross-agent QA, supervision, and coordination.
+
+**These are suggestions, not mandatory assignments.** You have better firsthand knowledge of the current system. Modify the allocation if another division will produce a greater score improvement.
+
+Avoid allocating agents to problems already solved unless additional work there has a concrete expected benefit.
+
+## 3. First assess the CURRENT state
+
+Before creating the six prompts, quickly inspect the current repository and available checkpoints.
+
+You already have extensive working knowledge, so do not repeat the entire research or preparation process.
+
+Determine:
+
+- Which code modules and workflows already function correctly.
+- Which bugs, limitations, or missing capabilities have the greatest impact on accuracy.
+- The latest completed and ongoing evaluation results.
+- The current 518-case execution state.
+- The causes of unresolved cases.
+- The reasons for incorrect or missing remediation steps.
+- Which experiments are still running.
+- Which files and processes your current session actively owns.
+- Which components can be safely delegated.
+- Which work should remain exclusively under your control.
+
+Previous checkpoints indicated serious gaps in case resolution and exact remediation-step agreement, but those numbers may now be outdated.
+
+**Use the latest actual state, not outdated checkpoint assumptions.**
+
+Do not interrupt, cancel, overwrite, or restart the active target run just to create this delegation plan.
+
+## 4. Absolutely prevent agent conflicts
+
+This is a critical requirement.
+
+All seven agents must work toward the same goal while having independently owned responsibilities.
+
+They must not overwrite each other's work or corrupt active processing.
+
+Design a safe parallel execution strategy that addresses:
+
+- Exclusive file and module ownership.
+- Shared-file read permissions.
+- Isolated temporary directories.
+- Independent test and evaluation outputs.
+- Separate inference cache or checkpoint namespaces where necessary.
+- Safe code integration.
+- Concurrent GPU usage.
+- Shared progress and coordination records.
+- Conflict detection and resolution.
+
+Inspect the actual Git working-tree state first.
+
+The current checkout may contain uncommitted changes, untracked files, active run artifacts, and cached inference results. Do not assume that creating Git worktrees from HEAD automatically preserves the current implementation.
+
+Choose an isolation strategy that preserves the real working baseline.
+
+You may use isolated working copies, safe worktrees, or strict ownership-controlled directories, whichever is most appropriate for this environment.
+
+**Do not allow multiple agents to modify the same shared file concurrently.**
+
+When an agent needs changes in another agent's module, it must produce a patch, isolated candidate implementation, or precise change proposal for the file owner or primary integration agent.
+
+You remain the final authority for integration and release.
+
+Do not commit, push, switch the current working branch, upload a submission, or perform destructive operations unless explicitly authorized.
+
+All sessions must follow `AGENTS.md` and the official challenge requirements.
+
+## 5. Dedicated orchestrator: Agent 6
+
+One of the six new agents must work exclusively as the **Orchestrator / Supervisor / Quality Controller**.
+
+Its mission is not to implement features independently.
+
+Its mission is to help all seven agents work correctly, efficiently, and cohesively.
+
+It must:
+
+1. Maintain visibility into the assignments, status, progress, blockers, and deliverables of all seven agents.
+2. Review their test results, implementation changes, proposed patches, and evaluation evidence.
+3. Detect incorrect assumptions, regression risks, overlapping modifications, stalled work, or optimization in the wrong direction.
+4. Alert the responsible agent whenever a problem is identified.
+5. Escalate cross-agent conflicts and integration risks to Agent 0.
+6. Compare improvements against measurable baseline results.
+7. Identify duplicated effort or neglected high-impact problems.
+8. Recommend urgent task reprioritization based on remaining time.
+9. Maintain a continuously updated integration and release-readiness checklist.
+10. Ensure that proposed improvements support general correctness rather than case-specific answer fitting.
+
+Establish a real communication mechanism.
+
+If direct agent-to-agent messaging is supported, use it. Otherwise, establish shared coordination files containing status, alerts, recommendations, and integration requests.
+
+Every agent must explicitly check incoming coordination alerts at frequent milestones, ideally at intervals of 1–2 minutes when practical.
+
+The orchestrator should review updates frequently, but do not claim instantaneous delivery if the environment only supports periodic polling.
+
+The orchestrator must have an explicit escalation protocol for critical problems.
+
+**Agent 6 must never overwrite another agent's implementation or interfere with the active inference run.**
+
+It can recommend changes, request corrections, and block unsafe integration through the agreed coordination process. Agent 0 retains final integration authority.
+
+## 6. GPU inference and experimentation
+
+We currently rent the GPU running the Azure Foundry inference deployment.
+
+The GPU is charged on a time basis, rather than through ordinary per-request API billing.
+
+Therefore:
+
+- Do not impose an arbitrary $30 API-token spending cap on experimentation merely because earlier runs used that assumption.
+- There is no user-imposed API call count limit for this parallel optimization effort.
+- Agents may conduct independent LLM experiments where they can produce measurable improvements.
+- Reuse existing inference results whenever possible.
+- Prioritize experiments with high expected accuracy gains.
+
+However, unlimited permitted requests do not mean unlimited hardware throughput.
+
+The agents must respect actual GPU concurrency, throughput, memory, queueing behavior, context limits, and deployment availability.
+
+Avoid launching seven uncontrolled inference workloads simultaneously.
+
+The existing full target run must be protected from starvation or resource contention.
+
+Design a practical shared-GPU coordination strategy, giving priority to critical evaluations and final prediction generation.
+
+We want maximum useful experimentation and maximum score improvement within three hours, not maximum API call volume.
+
+Never expose credentials, create unauthorized deployments, or modify the rented infrastructure without explicit authorization.
+
+## 7. Preserve evaluation integrity
+
+All agents must comply with the official challenge contract.
+
+In particular:
+
+- Do not use target labels or expected answers as runtime prediction inputs.
+- Keep sample prediction generation separate from sample-answer evaluation.
+- Do not hardcode solutions for specific case IDs.
+- Do not invent evidence, citations, timestamps, or policy requirements.
+- Do not manufacture successful accuracy metrics.
+- Evaluate changes against independent tests and available authorized evaluation evidence.
+- Preserve correct fail-closed behavior where required by the contract.
+- Distinguish genuinely missing evidence from failures of extraction, retrieval, or reasoning.
+
+One major deliverable is a **complete, schema-valid 518-row `output.csv`**, produced according to the official rules.
+
+Investigate ways to resolve or represent uncertain cases that the contract permits, without inventing facts or silently weakening correctness.
+
+Improve exact remediation-step content and ordering, not merely case-status classification.
+
+## 8. Three-hour execution strategy
+
+Create a time-sensitive coordination plan.
+
+Suggested allocation:
+
+| Phase | Time budget |
+|---|---|
+| Session setup, ownership, and baselines | First 10–15 minutes |
+| Independent high-impact engineering and experiments | Next 75–90 minutes |
+| Integrate and compare improvements | Next 25–35 minutes |
+| Final complete evaluation and validation | Next 20–30 minutes |
+| Packaging, sanity checks, and release handoff | Remaining time |
+
+Adapt this plan based on the actual submission cutoff, remaining time, and inference runtime.
+
+Do not wait until the end to begin integration. Deliver improvements incrementally when safe.
+
+If a specialist's work is not ready near the integration deadline, preserve the last known working implementation rather than risking a late regression.
+
+**Our priority is a valid and accurate submission before the deadline, not a theoretically perfect system delivered too late.**
+
+## 9. Requirements for each generated agent prompt
+
+Produce SIX complete prompts.
+
+Each prompt must be fully self-contained so I can paste it into a completely new Codex session.
+
+Every prompt must include:
+
+**A. Identity and objective**
+- Unique agent number and role.
+- Shared hackathon objective.
+- Precise assigned problem.
+- Why the problem matters to the final score.
+
+**B. Repository and operating context**
+- Exact Windows repository location.
+- Relevant existing files and modules.
+- Required instructions and challenge contracts.
+- Existing implementation that must be preserved.
+- Assumptions that must be verified at startup.
+
+**C. Exclusive responsibilities**
+- Specific modules, components, and tasks the agent owns.
+- What it must investigate.
+- What it must implement or evaluate.
+- What it explicitly must not modify.
+- Dependencies on other agents.
+
+**D. Execution instructions**
+- Immediate first actions.
+- Prioritized engineering tasks.
+- How to run relevant tests.
+- How to evaluate improvements.
+- How to use inference resources safely.
+- How to preserve existing checkpoints.
+
+**E. Communication protocol**
+- Where to publish status.
+- Where to receive orchestrator alerts.
+- How to report important findings.
+- How to request changes in another agent's module.
+- How to submit changes for integration.
+- How to report an urgent blocker.
+
+**F. Acceptance criteria**
+- Concrete technical deliverables.
+- Tests that must pass.
+- Metrics or behavioral outcomes to measure.
+- Evidence needed to substantiate improvements.
+- A clear completion condition.
+
+**G. Restrictions**
+- No conflicting modifications.
+- No unsupported output fabrication.
+- No unauthorized destructive operations.
+- No unnecessary full reruns.
+- No exposure of secrets.
+- No unapproved submission.
+- Follow `AGENTS.md`, including the required logging and trace procedures.
+
+For Agent 6, replace feature-implementation tasks with an explicit monitoring, review, communication, escalation, and coordination workflow.
+
+Each prompt must be operational, not a vague job description.
+
+Do not use placeholders such as "insert relevant module here." Inspect the repository and provide real paths and actionable responsibilities.
+
+## 10. Shared coordination infrastructure
+
+Define the exact coordination mechanism all seven agents will use.
+
+Prefer a simple filesystem-based system if no reliable direct inter-agent messaging exists.
+
+It must support:
+
+- Agent identities and assignments.
+- Exclusive ownership mapping.
+- Regular progress reports.
+- High-priority alerts.
+- Integration requests.
+- Test and metric summaries.
+- Pending integration decisions.
+- Final release readiness.
+
+Separate these internal working artifacts from submission materials unless official rules explicitly require them.
+
+Ensure status writing is isolated so agents do not overwrite each other's reports.
+
+The generated prompts must all refer to the same coordination conventions.
+
+The orchestrator must be able to determine which agent owns any disputed file or responsibility.
+
+## 11. Your own role after delegation
+
+You are **Agent 0**.
+
+You must not stop implementing simply because work has been distributed.
+
+Continue owning:
+
+- The active target evaluation and its checkpoints.
+- Shared-system integration.
+- Cross-component regression testing.
+- Final end-to-end execution.
+- Final `output.csv` generation and validation.
+- Final source packaging.
+- Submission artifact verification.
+- Release-readiness decisions and handoff to me.
+
+Avoid modifying modules exclusively assigned to specialists until their changes are ready for integration, unless an urgent blocking issue requires reassignment through the agreed coordination process.
+
+The orchestrator will review your progress as well.
+
+All agents, including you, are subject to the same quality and coordination standards.
+
+## 12. Required response — generate the prompts NOW
+
+Your next response must contain, in this exact order:
+
+### Part 1 — Current state and task allocation
+
+A concise snapshot of the current project state and the highest-impact remaining issues.
+
+Then a table showing all seven agents, their assignments, exclusive file ownership, expected deliverables, and dependencies.
+
+### Part 2 — Parallel execution protocol
+
+The exact isolation, communication, monitoring, GPU-sharing, and safe integration strategy.
+
+Provide any essential setup commands.
+
+### Part 3 — Six individual copy-paste prompts
+
+Output six clearly separated complete prompts:
+
+**PROMPT 1 — AGENT 1**
+
+**PROMPT 2 — AGENT 2**
+
+**PROMPT 3 — AGENT 3**
+
+**PROMPT 4 — AGENT 4**
+
+**PROMPT 5 — AGENT 5**
+
+**PROMPT 6 — AGENT 6: ORCHESTRATOR**
+
+Each must work as a standalone initial Codex session instruction.
+
+### Part 4 — Launch instructions
+
+Tell me the recommended launch order, whether any one-time isolation setup is needed, and which prompts can be launched immediately in parallel.
+
+Make sure I can launch all six new sessions without further planning.
+
+### Part 5 — Your continuing work
+
+State what you, Agent 0, will continue doing while the other six agents work, including how you will safely integrate their results.
+
+---
+
+# FINAL PRIORITY
+
+**We have approximately three hours. Generate all six agent prompts immediately, using your actual current project knowledge.**
+
+Do not spend substantial time recreating existing research.
+
+Do not pause or damage the active evaluation process.
+
+Do not produce generic prompts disconnected from the repository.
+
+Do not create a system where all seven agents edit the same files.
+
+The six new agents must be independently productive, mutually compatible, and coordinated by one dedicated supervisor.
+
+**One shared goal: maximize legitimate measured accuracy, complete the submission, and achieve the highest possible hackathon score before the deadline.**
+
+Produce the six prompts now so I can immediately launch all six Codex sessions.
+
+Agent Response Summary:
+Prepared six independent manual-launch prompts after checking the current source snapshot and the active target-run checkpoint. Created isolated workspaces and coordination records outside the repository. The target run remains active.
+
+Actions:
+* Retrieved this exact challenge-work prompt from the active session trace and appended it as a correction without rewriting log history.
+* Re-read the new log tail to verify the exact prompt and runtime metadata are present.
+
+Context:
+tool=Codex Desktop
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+parent_agent=none
+
+
+---
+
+User Prompt (verbatim; secrets redacted if present):
+
+[the named Azure resource group `rajibdeb9t-8474-resource` was absent after explicitly selecting Azure `Subscription 1`; under your earlier cleanup instruction, I will not guess at resources or shut down the PC unless deployment resources can be identified and their removal verified.  ]
+&#x20;I told you not to care about deleting the resource, caring about Azure subscription 1, or shutting down the PC. I told you that because at that time I was sleeping, it was maybe 9 hours ago, and I already woke up. You don't need to care about these things. Just move ahead and go ahead with what you have to do, because we have very little time. I am getting very stressed and very scared of whether we can complete it by the time, because we have almost 2 or 3 hours at most.\
+\
+Please go ahead and continue your work for this agent session. I have already launched the 6 agents, so continue your work. You can call the API millions of times. Currently, the OpenAI GPT-4S 100 billion is running with our rented GPU. You can call the API millions of times because we have rented the whole GPU. We won't get rate-limited or anything.\
+\
+Please don't care about any limitations or anything. Just go in full force to complete it in the next 2 hours. Go ahead, and all the agents, including the orchestrator, are currently running perfectly. Just go ahead, go ahead.&#x20;
+

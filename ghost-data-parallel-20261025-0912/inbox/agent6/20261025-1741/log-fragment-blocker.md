@@ -1,0 +1,3 @@
+# Official log fragment blocker
+
+No valid `log-fragment.txt` can be supplied yet. Repository AGENTS.md §5 requires an exact current runtime model identifier in every per-turn entry. Available runtime context identifies Codex and a GPT-6 family only, not the exact model ID. Do not guess or append an invalid `model=` value. The redacted user prompt is staged in `user-turn-redacted.md`. Agent 0 may append a valid entry after obtaining authoritative runtime metadata.

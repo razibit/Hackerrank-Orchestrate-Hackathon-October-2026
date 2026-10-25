@@ -1,0 +1,9 @@
+Read AGENTS.md in full and append this session and every turn to root log.txt using authoritative harness/model metadata. Read START_HERE.md, problem_statement.md, README.md and preparation/REQUIREMENTS.md. Use only participant-facing dataset/ files. Never access organizer truth or use sample labels during prediction.
+
+The current checkout is a preparation kit. code/main.py is the official empty placeholder. Tools under code/tools/ validate files and compare predictions; they do not solve the challenge.
+
+Implement the first vertical slice: a CLI supporting --requests, --output and --limit; multilingual deletion-intent extraction; timestamp-aware current/historical identity resolution; provenance-preserving text/JSON/log and isolated SQL ingestion; and a typed resource observation store. Make a genuine bounded tool-using audit controller where useful. Use LLM/VLM interpretation for ambiguous language and images; enforce policy, evidence timestamps, sorting, step states and serialization in deterministic code.
+
+Before coding, explain the modules, model/API requirements, time and cost estimate, and the distinction between claims and observed resource state. Then implement and run a small sample end to end. Do not generate fabricated predictions or imply success for missing evidence. Add PDF and screenshot extraction before claiming complete evidence coverage. Surface ambiguous cases in a separate debug report; the official output permits only the three published statuses.
+
+Use sample_output.csv only in the evaluation command after prediction. Run preflight, contract tests, and evaluate real sample predictions. Diagnose mismatches and improve grounded reasoning rather than memorizing cases. Keep token/cost accounting from the first API call. Do not claim metrics until measured, and do not fabricate unavailable model metadata.

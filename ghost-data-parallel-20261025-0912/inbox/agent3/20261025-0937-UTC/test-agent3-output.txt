@@ -1,0 +1,12 @@
+test_backup_retention_requires_proven_restore_block_capability (test_agent3_policy.Agent3PolicyConditionTests.test_backup_retention_requires_proven_restore_block_capability) ... ok
+test_conditional_uncertainty_and_false_conditions_fail_closed_as_specified (test_agent3_policy.Agent3PolicyConditionTests.test_conditional_uncertainty_and_false_conditions_fail_closed_as_specified) ... ok
+test_legal_hold_requires_explicit_active_hold_evidence (test_agent3_policy.Agent3PolicyConditionTests.test_legal_hold_requires_explicit_active_hold_evidence) ... ok
+test_plan_orders_flow_and_restore_controls_before_record_changes (test_agent3_policy.Agent3PolicyConditionTests.test_plan_orders_flow_and_restore_controls_before_record_changes) ... ok
+test_security_log_uses_supplied_deadline_at_audit_time (test_agent3_policy.Agent3PolicyConditionTests.test_security_log_uses_supplied_deadline_at_audit_time) ... ok
+test_support_message_policy_requires_message_or_context_content (test_agent3_policy.Agent3PolicyConditionTests.test_support_message_policy_requires_message_or_context_content) ... ok
+test_tombstone_shape_requires_deleted_state_stable_id_and_redacted_fields (test_agent3_policy.Agent3PolicyConditionTests.test_tombstone_shape_requires_deleted_state_stable_id_and_redacted_fields) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+OK

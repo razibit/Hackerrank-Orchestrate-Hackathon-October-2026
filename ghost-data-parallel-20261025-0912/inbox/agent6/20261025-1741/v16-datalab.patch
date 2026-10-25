@@ -1,0 +1,812 @@
+--- a/code/README.md
++++ b/code/README.md
+@@ -8,6 +8,7 @@
+ 
+ - Python 3.12 (the runtime used for the recorded tests and inference)
+ - An Azure CLI login authorized for the configured Microsoft Foundry endpoint, or an existing local `AZURE_FOUNDRY_API_KEY`
++- A DataLab API key in the process environment for PDF/image evidence extraction
+ - The challenge dataset in a separate `dataset/` directory
+ 
+ Install the packages:
+@@ -23,7 +24,11 @@
+ $env:AZURE_FOUNDRY_ENDPOINT = "https://<your-foundry-endpoint>"
+ $env:AZURE_FOUNDRY_DEPLOYMENT = "<deployment-name>"
+ $env:AZURE_FOUNDRY_MODEL_NAME = "<model-name>"
++$datalabSecret = Read-Host "Datalab API key" -AsSecureString
++$env:DATALAB_API_KEY = [System.Net.NetworkCredential]::new("", $datalabSecret).Password
+ ```
++
++The DataLab key is read only from the process environment; do not place it in source, `.env`, logs, traces, or archives. PDF pages are rendered to temporary 300-DPI PNGs and submitted as images. PNG evidence is submitted directly. Both use DataLab structured extraction with `mode="accurate"` and `extraction_mode="accurate"`, which return field citations and verification metadata. The underlying model is provider-managed; the SDK does not expose its exact model identifier.
+ 
+ Run preflight, unit tests, and then inference:
+ 
+--- a/code/requirements.txt
++++ b/code/requirements.txt
+@@ -1,3 +1,4 @@
+ openai==2.24.0
+ PyMuPDF==1.27.2.2
+ Pillow==12.0.0
++datalab-python-sdk==0.5.0
+--- a/code/main.py
++++ b/code/main.py
+@@ -24,7 +24,7 @@
+ from contract import FIELDS, evidence_times, validate
+ 
+ 
+-ENGINE_VERSION = "audit-engine-v15"
++ENGINE_VERSION = "audit-engine-v16"
+ DEFAULT_AUTHORIZED_CAP_USD = 30.0
+ LOCAL_CONFIG_KEYS = {
+     "AZURE_FOUNDRY_ENDPOINT", "AZURE_OPENAI_ENDPOINT",
+@@ -42,7 +42,8 @@
+ 
+     API-key variables are deliberately excluded. Foundry inference uses an
+     authenticated Azure CLI token unless a caller explicitly provides a
+-    FOUNDRY key in the process environment.
++    FOUNDRY key in the process environment. Datalab likewise reads its key
++    only from the process environment.
+     """
+     for path in (ROOT / ".env.local", ROOT / ".env"):
+         if not path.is_file():
+@@ -134,7 +135,13 @@
+     temporary.replace(path)
+ 
+ 
+-def _usage_summary(model: FoundryChatModel, cache: JsonResponseCache, request_count: int, elapsed: float) -> dict[str, object]:
++def _usage_summary(
++    model: FoundryChatModel,
++    cache: JsonResponseCache,
++    request_count: int,
++    elapsed: float,
++    datalab_usage: dict[str, object],
++) -> dict[str, object]:
+     actual = list(model.ledger.records)
+     cached_records: list[dict[str, object]] = []
+     for cache_entry in cache.reused_usage.values():
+@@ -179,6 +186,7 @@
+         "gpu_hours_since_billing_start": round(model._gpu_hours(), 6) if model.billing_started else None,
+         "elapsed_seconds": round(elapsed, 3),
+         "usage_records": all_calls,
++        "document_extraction": datalab_usage,
+     }
+     return totals
+ 
+@@ -196,10 +204,16 @@
+     rules = load_policy(read_csv(dataset / "deletion_rules.csv"))
+ 
+     cache_root = args.cache_dir.resolve()
+-    observations, activity, extraction_cache_hit, data_hash = load_or_extract(dataset, cache_root)
++    observations, activity, extraction_cache_hit, data_hash, datalab_usage = load_or_extract(dataset, cache_root)
+     print(f"extraction: observations={len(observations)} activity={len(activity)} cache_hit={str(extraction_cache_hit).lower()}")
+     if args.extract_only:
+         print(f"extraction fingerprint: {data_hash}")
++        print(
++            "Datalab extraction: "
++            f"attempts={datalab_usage.get('request_attempts', 0)} "
++            f"successes={datalab_usage.get('successful_requests', 0)} "
++            f"failures={datalab_usage.get('failed_requests', 0)}"
++        )
+         return 0
+ 
+     ledger = UsageLedger.create()
+@@ -282,10 +296,10 @@
+             print(f"case {index}/{len(requests)} {case_id}: processing failure ({type(exc).__name__})", file=sys.stderr)
+ 
+         if index % 10 == 0 or index == len(requests):
+-            usage = _usage_summary(model, response_cache, len(requests), time.monotonic() - started)
++            usage = _usage_summary(model, response_cache, len(requests), time.monotonic() - started, datalab_usage)
+             (run_dir / "usage_checkpoint.json").write_text(json.dumps(usage, ensure_ascii=False), encoding="utf-8")
+ 
+-    usage = _usage_summary(model, response_cache, len(requests), time.monotonic() - started)
++    usage = _usage_summary(model, response_cache, len(requests), time.monotonic() - started, datalab_usage)
+     (run_dir / "usage_checkpoint.json").write_text(json.dumps(usage, ensure_ascii=False), encoding="utf-8")
+     if unresolved:
+         unresolved_path = run_dir / "unresolved_cases.txt"
+@@ -299,7 +313,7 @@
+ 
+     output_path = args.output.resolve()
+     _write_predictions(output_path, results, requests, dataset)
+-    usage = _usage_summary(model, response_cache, len(requests), time.monotonic() - started)
++    usage = _usage_summary(model, response_cache, len(requests), time.monotonic() - started, datalab_usage)
+     usage["run_key"] = run_key
+     usage["dataset_fingerprint"] = data_hash
+     usage["output_sha256"] = hashlib.sha256(output_path.read_bytes()).hexdigest()
+--- /dev/null
++++ b/code/audit_agent/datalab_ocr.py
+@@ -0,0 +1,221 @@
++"""Structured, citation-bearing OCR through Datalab's accurate extraction API."""
++
++from __future__ import annotations
++
++import json
++import os
++import time
++from pathlib import Path
++from typing import Any
++
++
++EXTRACTOR_VERSION = "datalab-accurate-image-extraction-v1"
++PARSE_MODE = "accurate"
++EXTRACTION_MODE = "accurate"
++
++PAGE_SCHEMA: dict[str, Any] = {
++    "type": "object",
++    "properties": {
++        "transcribed_text": {
++            "type": "string",
++            "description": (
++                "Faithfully transcribe all visible text on this page in reading order. "
++                "Preserve line breaks and labels. Do not summarize, infer, normalize IDs, "
++                "or add facts that are not visible."
++            ),
++        },
++        "tables": {
++            "type": "array",
++            "description": "Every visible table, preserving row and column boundaries.",
++            "items": {
++                "type": "object",
++                "properties": {
++                    "caption": {"type": "string", "description": "Visible table title, or empty."},
++                    "headers": {
++                        "type": "array",
++                        "items": {"type": "string"},
++                        "description": "Visible column headers, in left-to-right order.",
++                    },
++                    "rows": {
++                        "type": "array",
++                        "items": {"type": "array", "items": {"type": "string"}},
++                        "description": "Table cells, one array per row, in left-to-right order.",
++                    },
++                },
++            },
++        },
++    },
++}
++
++
++class DatalabConfigurationError(RuntimeError):
++    pass
++
++
++class DatalabExtractionError(RuntimeError):
++    pass
++
++
++class DatalabOCR:
++    """Synchronous page-image extractor with bounded retries and safe usage records."""
++
++    def __init__(self, client: Any | None = None, options_type: Any | None = None):
++        self._client = client
++        self._options_type = options_type
++        self.usage_records: list[dict[str, Any]] = []
++
++    def _initialize(self) -> None:
++        if self._client is not None and self._options_type is not None:
++            return
++        if not os.environ.get("DATALAB_API_KEY", "").strip():
++            raise DatalabConfigurationError(
++                "Set DATALAB_API_KEY in the process environment to extract PDF/image evidence"
++            )
++        try:
++            from datalab_sdk import DatalabClient, ExtractOptions
++        except ImportError as exc:
++            raise DatalabConfigurationError(
++                "Install code/requirements.txt to use Datalab document extraction"
++            ) from exc
++        self._client = DatalabClient()
++        self._options_type = ExtractOptions
++
++    @staticmethod
++    def _parse_result(result: Any) -> dict[str, Any]:
++        if getattr(result, "success", True) is False:
++            raise DatalabExtractionError("Datalab reported an unsuccessful extraction")
++        raw = getattr(result, "extraction_schema_json", None)
++        if isinstance(raw, str):
++            try:
++                extraction = json.loads(raw)
++            except json.JSONDecodeError as exc:
++                raise DatalabExtractionError("Datalab returned invalid structured JSON") from exc
++        else:
++            extraction = raw
++        if not isinstance(extraction, dict):
++            raise DatalabExtractionError("Datalab returned no structured extraction object")
++        transcription = extraction.get("transcribed_text", "")
++        tables = extraction.get("tables", [])
++        if not isinstance(transcription, str) or not isinstance(tables, list):
++            raise DatalabExtractionError("Datalab extraction did not match the requested schema")
++
++        citations: dict[str, Any] = {}
++        metadata: dict[str, Any] = {}
++
++        def collect(node: Any, prefix: str = "") -> None:
++            if isinstance(node, dict):
++                for key, value in node.items():
++                    path = f"{prefix}.{key}" if prefix else str(key)
++                    if str(key).endswith("_citations"):
++                        citations[path] = value
++                    elif str(key).endswith("_meta"):
++                        metadata[path] = value
++                    else:
++                        collect(value, path)
++            elif isinstance(node, list):
++                for index, value in enumerate(node):
++                    collect(value, f"{prefix}[{index}]")
++
++        collect(extraction)
++        layout = getattr(result, "json", None)
++        if callable(layout):
++            layout = None
++        markdown = getattr(result, "markdown", None)
++        return {
++            "transcribed_text": transcription,
++            "tables": tables,
++            "citations": citations,
++            "field_metadata": metadata,
++            "layout_json": layout if isinstance(layout, (dict, list)) else None,
++            "markdown": markdown if isinstance(markdown, str) else "",
++            "parse_quality_score": getattr(result, "parse_quality_score", None),
++            "page_count": getattr(result, "page_count", None),
++            "cost_breakdown": getattr(result, "cost_breakdown", None),
++        }
++
++    def extract_image(self, image_path: Path) -> dict[str, Any]:
++        self._initialize()
++        options = self._options_type(
++            page_schema=json.dumps(PAGE_SCHEMA, ensure_ascii=False),
++            extraction_mode=EXTRACTION_MODE,
++            mode=PARSE_MODE,
++            output_format="json",
++            save_checkpoint=False,
++        )
++        last_error: Exception | None = None
++        for attempt in range(1, 4):
++            started = time.monotonic()
++            record: dict[str, Any] = {
++                "provider": "Datalab",
++                "operation": "structured_image_extraction",
++                "parse_mode": PARSE_MODE,
++                "extraction_mode": EXTRACTION_MODE,
++                "attempt": attempt,
++                "success": False,
++                "elapsed_seconds": None,
++                "input_tokens": None,
++                "output_tokens": None,
++                "total_tokens": None,
++                "final_cost_cents": None,
++            }
++            try:
++                result = self._client.extract(str(image_path), options=options)
++                record["success"] = getattr(result, "success", True) is not False
++                breakdown = getattr(result, "cost_breakdown", None)
++                if isinstance(breakdown, dict):
++                    cost = breakdown.get("final_cost_cents")
++                    if isinstance(cost, (int, float)):
++                        record["final_cost_cents"] = cost
++                parsed = self._parse_result(result)
++                record["elapsed_seconds"] = round(time.monotonic() - started, 3)
++                self.usage_records.append(record)
++                return parsed
++            except DatalabExtractionError:
++                record["success"] = False
++                record["elapsed_seconds"] = round(time.monotonic() - started, 3)
++                self.usage_records.append(record)
++                raise
++            except Exception as exc:
++                record["elapsed_seconds"] = round(time.monotonic() - started, 3)
++                record["error_type"] = type(exc).__name__
++                self.usage_records.append(record)
++                last_error = exc
++                response = getattr(exc, "response", None)
++                status_code = getattr(exc, "status_code", None) or getattr(response, "status_code", None)
++                try:
++                    status_code = int(status_code) if status_code is not None else None
++                except (TypeError, ValueError):
++                    status_code = None
++                retryable = status_code is None or status_code in {408, 429} or status_code >= 500
++                if attempt >= 3 or not retryable:
++                    break
++                time.sleep(2 ** (attempt - 1))
++        raise DatalabExtractionError(
++            f"Datalab request failed after {len(self.usage_records)} recorded attempts"
++        ) from last_error
++
++    def usage_summary(self) -> dict[str, Any]:
++        successful = [record for record in self.usage_records if record.get("success")]
++        costs = [
++            float(record["final_cost_cents"])
++            for record in self.usage_records
++            if isinstance(record.get("final_cost_cents"), (int, float))
++        ]
++        return {
++            "provider": "Datalab",
++            "model_name": "provider-managed accurate extraction (exact model ID not exposed by SDK result)",
++            "parse_mode": PARSE_MODE,
++            "extraction_mode": EXTRACTION_MODE,
++            "request_attempts": len(self.usage_records),
++            "successful_requests": len(successful),
++            "failed_requests": len(self.usage_records) - len(successful),
++            "retries": sum(1 for record in self.usage_records if int(record.get("attempt", 1)) > 1),
++            "input_tokens": None,
++            "output_tokens": None,
++            "total_tokens": None,
++            "reported_cost_cents": sum(costs) if costs else None,
++            "elapsed_seconds": round(
++                sum(float(record.get("elapsed_seconds") or 0) for record in self.usage_records), 3
++            ),
++            "usage_records": self.usage_records,
++        }
+--- a/code/audit_agent/cache.py
++++ b/code/audit_agent/cache.py
+@@ -7,6 +7,7 @@
+ from dataclasses import asdict
+ 
+ from .data import parse_instant, read_csv
++from .datalab_ocr import DatalabOCR, EXTRACTOR_VERSION
+ from .extractors import extract_activity, extract_sources
+ from .model import ModelCallError
+ from .types import Observation
+@@ -113,9 +114,10 @@
+     ]
+     for row in read_csv(dataset / "evidence_files.csv"):
+         files.append((dataset / row["file_path"]).resolve())
+-    digest = hashlib.sha256(b"evidence-extractor-v3\0")
++    digest = hashlib.sha256(f"evidence-extractor-v4\0{EXTRACTOR_VERSION}\0".encode("utf-8"))
+     for source_file in (
+         Path(__file__).with_name("extractors.py"),
++        Path(__file__).with_name("datalab_ocr.py"),
+         Path(__file__).with_name("data.py"),
+         Path(__file__).with_name("types.py"),
+     ):
+@@ -132,20 +134,32 @@
+     return digest.hexdigest()
+ 
+ 
+-def load_or_extract(dataset: Path, cache_root: Path) -> tuple[list[Observation], list[Observation], bool, str]:
++def load_or_extract(
++    dataset: Path, cache_root: Path,
++) -> tuple[list[Observation], list[Observation], bool, str, dict[str, Any]]:
+     fingerprint = dataset_fingerprint(dataset)
+     cache_dir = cache_root / "extract" / fingerprint
+     source_path = cache_dir / "sources.jsonl"
+     activity_path = cache_dir / "activity.jsonl"
++    usage_path = cache_dir / "datalab_usage.json"
+     if source_path.is_file() and activity_path.is_file():
+         try:
+             sources = [_observation_from_json(line) for line in source_path.read_text(encoding="utf-8").splitlines() if line]
+             activity = [_observation_from_json(line) for line in activity_path.read_text(encoding="utf-8").splitlines() if line]
+-            return sources, activity, True, fingerprint
++            stored_usage = json.loads(usage_path.read_text(encoding="utf-8")) if usage_path.is_file() else {}
++            if not isinstance(stored_usage, dict):
++                stored_usage = {}
++            stored_usage["cache_hit"] = True
++            stored_usage["requests_sent_this_run"] = 0
++            return sources, activity, True, fingerprint, stored_usage
+         except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError):
+             pass
+-    sources = extract_sources(dataset)
++    provider = DatalabOCR()
++    sources = extract_sources(dataset, datalab=provider)
+     activity = extract_activity(dataset)
++    extraction_usage = provider.usage_summary()
++    extraction_usage["cache_hit"] = False
++    extraction_usage["requests_sent_this_run"] = extraction_usage["request_attempts"]
+     cache_dir.mkdir(parents=True, exist_ok=True)
+     for path, values in ((source_path, sources), (activity_path, activity)):
+         temp = path.with_suffix(".tmp")
+@@ -156,7 +170,10 @@
+                 item["observed_at"] = value.observed_at.isoformat()
+                 stream.write(json.dumps(item, ensure_ascii=False, separators=(",", ":"), default=str) + "\n")
+         temp.replace(path)
+-    return sources, activity, False, fingerprint
++    usage_temp = usage_path.with_suffix(".tmp")
++    usage_temp.write_text(json.dumps(extraction_usage, ensure_ascii=False), encoding="utf-8")
++    usage_temp.replace(usage_path)
++    return sources, activity, False, fingerprint, extraction_usage
+ 
+ 
+ def _observation_from_json(line: str) -> Observation:
+--- a/code/audit_agent/extractors.py
++++ b/code/audit_agent/extractors.py
+@@ -3,14 +3,14 @@
+ import json
+ import re
+ import shlex
+-import shutil
+ import sqlite3
+-import subprocess
++import tempfile
+ from collections import defaultdict
+ from pathlib import Path
+ from typing import Any, Iterable
+ 
+ from .data import maybe_instant, parse_instant, path_is_within, read_csv
++from .datalab_ocr import DatalabOCR
+ from .types import EvidenceSource, Observation
+ 
+ 
+@@ -746,20 +746,6 @@
+         conn.close()
+ 
+ 
+-def _ocr_bytes(image_bytes: bytes) -> str:
+-    executable = shutil.which("tesseract")
+-    if not executable:
+-        raise RuntimeError("Tesseract is required to OCR image evidence")
+-    result = subprocess.run(
+-        [executable, "stdin", "stdout", "--psm", "6"], input=image_bytes,
+-        capture_output=True, timeout=60, check=False,
+-    )
+-    if result.returncode != 0:
+-        message = result.stderr.decode("utf-8", errors="replace")[:300]
+-        raise RuntimeError(f"Tesseract failed: {message}")
+-    return result.stdout.decode("utf-8", errors="replace")
+-
+-
+ def _text_source(source: EvidenceSource, path: Path, source_kind: str = "text") -> list[Observation]:
+     text = path.read_text(encoding="utf-8-sig", errors="replace")
+     rows = _structured_text_rows(source, text, source_kind, "text")
+@@ -769,23 +755,111 @@
+     return [_make_observation(source, fields, "text:1", source_kind, text)]
+ 
+ 
+-def _pdf_source(source: EvidenceSource, path: Path) -> list[Observation]:
++def _datalab_page_observations(
++    source: EvidenceSource,
++    image_path: Path,
++    source_kind: str,
++    page_no: int,
++    datalab: DatalabOCR,
++) -> list[Observation]:
++    """Extract one page image, then keep table rows and source citations together."""
++    result = datalab.extract_image(image_path)
++    visible_text = result.get("transcribed_text", "")
++    if not visible_text and result.get("markdown"):
++        visible_text = str(result["markdown"])
++
++    lines = [visible_text] if visible_text else []
++    tables = result.get("tables", [])
++    for table_index, table in enumerate(tables, start=1):
++        if not isinstance(table, dict):
++            continue
++        caption = table.get("caption")
++        if isinstance(caption, str) and caption.strip():
++            lines.append(caption.strip())
++        headers = table.get("headers", [])
++        if isinstance(headers, list) and headers:
++            lines.append(" | ".join(str(cell) for cell in headers))
++        rows = table.get("rows", [])
++        if isinstance(rows, list):
++            for row in rows:
++                if isinstance(row, list):
++                    lines.append(" | ".join(str(cell) for cell in row))
++
++    page_text = "\n".join(line for line in lines if line).strip()
++    if not page_text:
++        page_text = "[Datalab accurate extraction returned no readable page text]"
++    page_prefix = f"page:{page_no}:datalab"
++    page_citations = result.get("citations", {})
++    metadata = result.get("field_metadata", {})
++    layout = result.get("layout_json")
++    citations_json = json.dumps(page_citations, ensure_ascii=False, sort_keys=True, default=str)
++    metadata_json = json.dumps(metadata, ensure_ascii=False, sort_keys=True, default=str)
++    layout_json = json.dumps(layout, ensure_ascii=False, sort_keys=True, default=str) if layout is not None else ""
++
++    observations = _structured_text_rows(source, page_text, source_kind, page_prefix)
++    if not observations:
++        observations = _visual_resource_rows(source, page_text)
++    if not observations:
++        record_type = _record_type_from_text(f"{page_text} {source.path} {source.origin}")
++        fields: dict[str, Any] = {
++            "document_text": page_text,
++            "page_number": page_no,
++            "document_name": Path(source.path).name,
++            "ocr_provider": "Datalab",
++            "ocr_mode": "accurate",
++            "datalab_citations": citations_json[:1400],
++            "datalab_field_metadata": metadata_json[:1400],
++        }
++        if layout_json:
++            fields["datalab_layout_json"] = layout_json[:1400]
++        if result.get("parse_quality_score") is not None:
++            fields["datalab_parse_quality_score"] = result["parse_quality_score"]
++        if record_type:
++            fields["record_type"] = record_type
++        observations = [_make_observation(source, fields, page_prefix, source_kind, page_text)]
++
++    # A row observation keeps its line locator; Datalab's citations point back
++    # to page blocks/tables and remain attached as separate provenance fields.
++    for item in observations:
++        previous_locator = item.locator
++        if ":line:" in previous_locator:
++            row_locator = "line:" + previous_locator.rsplit(":line:", 1)[-1]
++        elif previous_locator.endswith(":selected"):
++            row_locator = "selected"
++        else:
++            row_locator = "page"
++        item.locator = f"{page_prefix}:{row_locator}"
++        item.fields["ocr_provider"] = "Datalab"
++        item.fields["ocr_mode"] = "accurate"
++        item.fields["ocr_page_number"] = page_no
++        item.fields["datalab_citations"] = page_citations
++        item.fields["datalab_field_metadata"] = metadata
++        if layout is not None:
++            item.fields["datalab_layout_json"] = layout
++        if citations_json:
++            item.fields["datalab_citation_summary"] = citations_json[:1400]
++        if metadata_json and len(metadata_json) <= 1400:
++            item.fields["datalab_metadata_summary"] = metadata_json
++        if result.get("parse_quality_score") is not None:
++            item.fields["datalab_parse_quality_score"] = result["parse_quality_score"]
++        if not item.raw_text.startswith("Datalab page"):
++            item.raw_text = f"Datalab page {page_no}\n{item.raw_text}"[:8000]
++    return observations
++
++
++def _pdf_source(source: EvidenceSource, path: Path, datalab: DatalabOCR) -> list[Observation]:
+     import fitz
+ 
+     out: list[Observation] = []
+     document = fitz.open(path)
+     try:
+-        for page_no, page in enumerate(document, 1):
+-            text = page.get_text("text") or ""
+-            if len(text.strip()) < 20:
+-                text = _ocr_bytes(page.get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False).tobytes("png"))
+-            rows = _structured_text_rows(source, text, "pdf", f"page:{page_no}")
+-            if rows:
+-                out.extend(rows)
+-                continue
+-            record_type = _record_type_from_text(f"{text} {path.name} {source.origin}")
+-            fields = {"document_text": text, "page_number": page_no, "document_name": path.name, "record_type": record_type}
+-            out.append(_make_observation(source, fields, f"page:{page_no}", "pdf", text))
++        with tempfile.TemporaryDirectory(prefix="datalab_pdf_pages_") as temporary_dir:
++            temporary_path = Path(temporary_dir)
++            scale = 300 / 72
++            for page_no, page in enumerate(document, 1):
++                image_path = temporary_path / f"page-{page_no:04d}.png"
++                page.get_pixmap(matrix=fitz.Matrix(scale, scale), alpha=False).save(str(image_path))
++                out.extend(_datalab_page_observations(source, image_path, "pdf", page_no, datalab))
+     finally:
+         document.close()
+     return out
+@@ -879,16 +953,8 @@
+     return []
+ 
+ 
+-def _image_source(source: EvidenceSource, path: Path) -> list[Observation]:
+-    text = _ocr_bytes(path.read_bytes())
+-    rows = _structured_text_rows(source, text, "image", "image:ocr")
+-    if rows:
+-        return rows
+-    visual_rows = _visual_resource_rows(source, text)
+-    if visual_rows:
+-        return visual_rows
+-    fields = {"image_text": text, "image_name": path.name, "record_type": _record_type_from_text(text)}
+-    return [_make_observation(source, fields, "image:ocr", "image", text)]
++def _image_source(source: EvidenceSource, path: Path, datalab: DatalabOCR) -> list[Observation]:
++    return _datalab_page_observations(source, path, "image", 1, datalab)
+ 
+ 
+ def load_manifest(dataset: Path) -> list[EvidenceSource]:
+@@ -908,8 +974,9 @@
+     return sources
+ 
+ 
+-def extract_sources(dataset: Path) -> list[Observation]:
++def extract_sources(dataset: Path, datalab: DatalabOCR | None = None) -> list[Observation]:
+     observations: list[Observation] = []
++    provider = datalab
+     for source in load_manifest(dataset):
+         path = (dataset / source.path).resolve()
+         suffix = path.suffix.lower()
+@@ -920,9 +987,11 @@
+         elif suffix == ".log":
+             batch = _log_source(source, path)
+         elif suffix == ".pdf":
+-            batch = _pdf_source(source, path)
++            provider = provider or DatalabOCR()
++            batch = _pdf_source(source, path, provider)
+         elif suffix == ".png":
+-            batch = _image_source(source, path)
++            provider = provider or DatalabOCR()
++            batch = _image_source(source, path, provider)
+         elif suffix == ".txt":
+             batch = _text_source(source, path)
+         else:
+--- a/code/tools/preflight.py
++++ b/code/tools/preflight.py
+@@ -2,7 +2,7 @@
+ import argparse
+ import importlib.util
+ import json
+-import shutil
++import os
+ from collections import Counter
+ from pathlib import Path
+ from contract import read_csv,evidence_times,validate,FIELDS
+@@ -36,7 +36,7 @@
+  print('Sample label distribution:',dict(Counter(r['deletion_status'] for r in samples[1])))
+  for module in ['pypdf','PIL','openai']:
+   print(f'Optional module {module}:',bool(importlib.util.find_spec(module)))
+- print('Optional OCR executable tesseract:',bool(shutil.which('tesseract')))
++ print('DataLab API key configured:',bool(os.environ.get('DATALAB_API_KEY','').strip()))
+  for error in errors: print('ERROR:',error)
+  if errors:raise SystemExit(1)
+  print('PASS: files, counts, evidence paths and official sample contract validated. This preflight does not run inference.')
+--- /dev/null
++++ b/code/tests/test_datalab_ocr.py
+@@ -0,0 +1,115 @@
++import json
++import sys
++import tempfile
++import unittest
++from datetime import datetime, timezone
++from pathlib import Path
++from types import SimpleNamespace
++
++ROOT = Path(__file__).resolve().parents[2]
++sys.path.insert(0, str(ROOT / "code"))
++
++from audit_agent.datalab_ocr import DatalabExtractionError, DatalabOCR
++from audit_agent.extractors import _pdf_source
++from audit_agent.types import EvidenceSource
++
++
++class Options:
++    def __init__(self, **kwargs):
++        self.kwargs = kwargs
++
++
++class FakeDatalabClient:
++    def __init__(self, result=None, errors=()):
++        self.result = result or SimpleNamespace(
++            success=True,
++            extraction_schema_json=json.dumps({
++                "transcribed_text": "Evidence register",
++                "transcribed_text_citations": ["/page/0/Text/1"],
++                "transcribed_text_meta": {"extraction_status": "EXTRACTED"},
++                "tables": [{"caption": "Records", "headers": ["resource_id", "user_id"], "rows": [["account_1", "user_1"]]}],
++                "tables_citations": ["/page/0/Table/1"],
++            }),
++            json={"pages": [{"blocks": [{"type": "Table", "bbox": [0, 0, 100, 50]}]}]},
++            markdown="Evidence register",
++            parse_quality_score=4.8,
++            page_count=1,
++            cost_breakdown={"final_cost_cents": 2.0},
++        )
++        self.errors = list(errors)
++        self.calls = []
++
++    def extract(self, path, options):
++        self.calls.append((path, options))
++        if self.errors:
++            error = self.errors.pop(0)
++            raise error
++        return self.result
++
++
++class DatalabOCRTests(unittest.TestCase):
++    def test_uses_high_accuracy_structured_extraction_and_preserves_citations(self):
++        client = FakeDatalabClient()
++        provider = DatalabOCR(client=client, options_type=Options)
++        result = provider.extract_image(Path("page.png"))
++
++        self.assertEqual(client.calls[0][1].kwargs["mode"], "accurate")
++        self.assertEqual(client.calls[0][1].kwargs["extraction_mode"], "accurate")
++        self.assertEqual(client.calls[0][1].kwargs["output_format"], "json")
++        self.assertEqual(result["transcribed_text"], "Evidence register")
++        self.assertEqual(result["citations"]["transcribed_text_citations"], ["/page/0/Text/1"])
++        self.assertEqual(result["field_metadata"]["transcribed_text_meta"]["extraction_status"], "EXTRACTED")
++        self.assertEqual(result["layout_json"]["pages"][0]["blocks"][0]["type"], "Table")
++        self.assertEqual(provider.usage_summary()["successful_requests"], 1)
++        self.assertEqual(provider.usage_summary()["reported_cost_cents"], 2.0)
++
++    def test_retries_network_errors_at_most_three_times(self):
++        client = FakeDatalabClient(errors=(OSError("offline"), OSError("offline"), OSError("offline")))
++        provider = DatalabOCR(client=client, options_type=Options)
++        with self.assertRaises(DatalabExtractionError):
++            provider.extract_image(Path("page.png"))
++        summary = provider.usage_summary()
++        self.assertEqual(len(client.calls), 3)
++        self.assertEqual(summary["request_attempts"], 3)
++        self.assertEqual(summary["failed_requests"], 3)
++        self.assertEqual(summary["retries"], 2)
++
++    def test_pdf_pages_are_rendered_to_png_and_sent_as_images(self):
++        import fitz
++
++        seen = []
++
++        class ImageVerifier:
++            def extract_image(self, image_path):
++                from PIL import Image
++
++                image_path = Path(image_path)
++                with Image.open(image_path) as image:
++                    seen.append((image_path.suffix, image.width, image.height))
++                return {
++                    "transcribed_text": "Customer operations account_1 user_1",
++                    "tables": [], "citations": {}, "field_metadata": {},
++                    "layout_json": {"pages": []}, "markdown": "",
++                    "parse_quality_score": 4.5, "page_count": 1,
++                }
++
++        with tempfile.TemporaryDirectory() as directory:
++            path = Path(directory) / "one-page.pdf"
++            pdf = fitz.open()
++            page = pdf.new_page(width=72, height=72)
++            page.insert_text((5, 20), "Customer operations account_1 user_1")
++            pdf.save(path)
++            pdf.close()
++            source = EvidenceSource("evidence-1", "one-page.pdf", "customer_operations", datetime(2026, 1, 1, tzinfo=timezone.utc))
++            observations = _pdf_source(source, path, ImageVerifier())
++
++        self.assertEqual(len(seen), 1)
++        self.assertEqual(seen[0][0], ".png")
++        self.assertGreaterEqual(seen[0][1], 299)
++        self.assertGreaterEqual(seen[0][2], 299)
++        self.assertTrue(observations[0].locator.startswith("page:1:datalab"))
++        self.assertEqual(observations[0].fields["ocr_provider"], "Datalab")
++
++
++if __name__ == "__main__":
++    unittest.main()
+--- a/README.md
++++ b/README.md
+@@ -155,3 +155,56 @@
+ - `code.zip` includes your runnable code, `README.md`, `code/evaluation/evaluation_report.md`, and `code/evaluation/usage_report.md`;
+ - `log.txt` follows the `AGENTS.md` turn format and is uploaded to the `chat_transcript` slot; and
+ - no API keys, credentials, real personal data, or sensitive configuration values are included.
++
++## Implemented audit agent
++
++The runnable implementation is in `code/main.py`. It performs provenance-preserving extraction, time-valid alias resolution, exact-identifier candidate retrieval, scoped state reconstruction, policy resolution, and strict output validation. Model-assisted intent and evidence classification use Microsoft Foundry's OpenAI-compatible endpoint with structured JSON output. The inference path never opens `sample_output.csv`; only `code/tools/evaluate.py` reads public labels, and it must be run after predictions exist.
++
++### Setup
++
++Use Python 3.11 or newer and install the pinned packages. PDF pages are rendered to PNG images in memory and PDF/image extraction uses Datalab's structured API; Tesseract is not used. On Windows:
++
++```powershell
++python -m venv .venv
++.\.venv\Scripts\Activate.ps1
++python -m pip install -r code\requirements.txt
++```
++
++Set `DATALAB_API_KEY` in the process environment before running extraction. Enter the key locally at a hidden prompt; do not add it to `.env`, source, logs, or the submission archive:
++
++```powershell
++$datalabSecret = Read-Host "Datalab API key" -AsSecureString
++$env:DATALAB_API_KEY = [System.Net.NetworkCredential]::new("", $datalabSecret).Password
++```
++
++The extractor uses Datalab `mode="accurate"` and `extraction_mode="accurate"`, preserving per-field citations and verification metadata. The API's exact underlying model identifier is provider-managed and is not returned by the SDK.
++
++Authenticate with Azure CLI (`az login`) or provide `AZURE_FOUNDRY_API_KEY` directly through the process environment. The CLI token path is used when no Foundry API key is set. The program reads only non-secret, allowlisted settings from a root `.env.local` or `.env`; it never loads API-key variables from those files. It accepts `AZURE_FOUNDRY_ENDPOINT` / `AZURE_FOUNDRY_DEPLOYMENT` and the existing aliases `AZURE_OPENAI_ENDPOINT` / `DEPLOYMENT_NAME`, including the copied `/openai/v1/chat/completions` endpoint.
++
++For rate-capped managed compute, configure the verified hourly accelerator rate, accelerator count, actual billing start, and `MAX_RUN_COST_USD` (default `$30`). If the live rate is not published, inference stays blocked by default. Use `--allow-uncapped-gpu-hours` only when the deployment owner has explicitly authorized open-ended hourly compute; this records accelerator-equivalent runtime hours and leaves USD cost unknown if no rate is configured. `--max-model-calls` is a separate hard bound on provider requests and retries. Start from `code/.env.example`; never submit a populated local configuration.
++
++Example PowerShell setup for rate-capped mode (values are placeholders and must be obtained from the ready deployment and its billing details):
++
++```powershell
++$env:AZURE_FOUNDRY_ENDPOINT = 'https://<resource>.services.ai.azure.com'
++$env:AZURE_FOUNDRY_DEPLOYMENT = 'openai--gpt-oss-120b'
++$env:AZURE_FOUNDRY_HOURLY_USD_PER_ACCELERATOR = '<verified-rate>'
++$env:AZURE_FOUNDRY_ACCELERATOR_COUNT = '2'
++$env:AZURE_FOUNDRY_BILLING_START_UTC = '<deployment-billing-start-UTC>'
++$env:MAX_RUN_COST_USD = '30'
++```
++
++### Run and evaluate
++
++The first command below extracts and caches the supplied evidence without calling a model. The sample inference command writes predictions without reading sample labels; evaluate only after it completes:
++
++```powershell
++python -B code\main.py --extract-only
++python -B code\main.py --requests sample_deletion_requests.csv --output sample_predictions.csv --allow-uncapped-gpu-hours
++python -B code\tools\evaluate.py sample_predictions.csv --report code\evaluation\evaluation_report.md
++python -B code\tools\validate_output.py output.csv
++```
++
++Run the full target set with `python -B code\main.py`. It writes the root `output.csv` only after every request is resolved and structural validation passes. Extraction and structured model responses are content-addressed under the ignored `.cache/` directory; per-case checkpoints and usage snapshots are under the ignored `.run/` directory. Cache keys include dataset, source, prompt, model, and schema versions. Unresolved cases block output creation. The agent proposes remediation only; it does not access customer systems or perform deletions.
++
++`code/prompts/` contains the actual runtime prompts. `code/tests/` contains independent contract and reasoning tests. The packaged source is intended to receive `dataset/` separately at run time.

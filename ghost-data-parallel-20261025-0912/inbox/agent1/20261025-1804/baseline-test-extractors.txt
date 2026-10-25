@@ -1,0 +1,25 @@
+.........F..........
+======================================================================
+FAIL: test_pipe_delimited_retention_register_is_split_by_subject (test_extractors.JsonExtractionTests.test_pipe_delimited_retention_register_is_split_by_subject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_extractors.py", line 146, in test_pipe_delimited_retention_register_is_split_by_subject
+    self.assertEqual((item.system_id, item.resource_id, item.category), ("legal_retention_service", "ORD-20264207", "LEGAL_HOLD_RECORD"))
+AssertionError: Tuples differ: ('legal_retention_service', 'ORD-20264207', 'UNRESOLVED') != ('legal_retention_service', 'ORD-20264207', 'LEGAL_HOLD_RECORD')
+
+First differing element 2:
+'UNRESOLVED'
+'LEGAL_HOLD_RECORD'
+
+- ('legal_retention_service', 'ORD-20264207', 'UNRESOLVED')
+?                                              ^^  ^ ^^^
+
++ ('legal_retention_service', 'ORD-20264207', 'LEGAL_HOLD_RECORD')
+?                                              ^^^^^^^^^^^  ^ ^
+
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.028s
+
+FAILED (failures=1)
+EXIT_CODE=1

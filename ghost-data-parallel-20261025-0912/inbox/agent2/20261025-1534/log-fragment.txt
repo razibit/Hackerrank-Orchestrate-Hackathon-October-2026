@@ -1,0 +1,83 @@
+## [2026-10-25T15:26:45+06:00] SESSION START
+
+tool=Codex
+model=gpt-6-luna
+Repo Root: D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent2
+Branch: main
+Worktree: D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent2
+Parent Agent: Agent 0
+Language: py
+Time Remaining: not configured
+
+## [2026-10-25T15:34:49+06:00] Agent 2 identity and temporal evidence
+
+User Prompt (verbatim, secrets redacted):
+# Files pasted by the user:
+
+## "You are Agent 2 — Identity and Temporal Evidence Specialist for HackerRank Orch…": C:\Users\Razib\.codex/attachments/91be0dd5-5209-4fe6-93bf-bd38e4ca994a/Pasted text.txt
+
+Pasted text contains the user's request.
+
+## My request:
+
+Pasted attachment contents (verbatim, secrets redacted):
+You are Agent 2 — Identity and Temporal Evidence Specialist for HackerRank Orchestrate October 2026, “Ghost Data Still Exists.”
+
+OBJECTIVE
+Improve legitimate measured accuracy and completeness by fixing general identity-linking or as-of-time errors. Your task is to resolve cases only where participant-visible evidence supports a unique, time-valid subject and state. Do not optimize apparent coverage by making weak identity joins.
+
+OPERATING CONTEXT
+Your isolated workspace is:
+D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent2
+
+The live repository is:
+D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26
+
+The participant dataset is read-only at:
+D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26\dataset
+
+Read `AGENTS.md`, `README.md`, `problem_statement.md`, `agent_trace_instructions.md`, `code/README.md`, and `code/SUBMISSION_MANIFEST.md` before editing. This snapshot includes the current uncommitted implementation; do not replace it with `HEAD`. The snapshot excludes `.git`, dataset, active run files, credentials, and virtual environment.
+
+The full v9 target run belongs exclusively to Agent 0 and is active. Latest stream progress was 328/518. Latest durable usage checkpoint: 443 attempts, 442 successful, 1 failed, 1 retry, 289 cache hits, 153 misses, 1,533,830 tokens. The latest completed v9 sample evaluation resolved 14/32; resolved-subset status accuracy was 14/14, but exact-step precision was 35/67 and recall 35/87. These metrics are selection-biased and do not imply full-sample accuracy.
+
+EXCLUSIVE OWNERSHIP
+You own only `code/audit_agent/identity.py`, `code/audit_agent/data.py`, and a new `code/tests/test_agent2_identity.py` in your isolated workspace. Do not modify `engine.py`, `extractors.py`, `policy.py`, model prompts, existing tests, CLI, or the live checkout. If a candidate/state reconstruction defect requires `engine.py`, provide Agent 0 a precise patch or change proposal instead.
+
+TASKS
+1. Review current alias normalization and validity intervals, request/audit timestamps, evidence availability, observation times, and future-evidence filtering.
+2. Test historical aliases, reassignment, overlapping aliases, missing intervals, offset/time-zone parsing, and aliases that are valid at request time but not audit time.
+3. Verify that unrelated people are never joined by names, weak similarity, shared resource prefixes, array position, or unverified requester fields.
+4. Check any apparent no-subject-evidence cases against exact stable IDs and valid aliases. Report genuine missing evidence separately from missed extraction or retrieval.
+5. Add only general synthetic regressions. Do not use case IDs or answer labels to encode behavior.
+6. If you improve state/time parsing, measure zero future-evidence leakage and unchanged handling of partial snapshots. Do not edit or overwrite Agent 0’s active run/checkpoints.
+
+TESTING
+Use the interpreter:
+D:\Hackerrank Orchastrate Hackathon 2026\hackerrank-orchestrate-october26\.venv\Scripts\python.exe
+
+From your workspace, set `PYTHONPATH` to its `code` directory. Run your focused `test_agent2_*.py` tests and then the complete unit suite. If you run a preflight or diagnostic, inspect the supported CLI with `--help` and pass the original dataset path read-only. Keep all generated files in your workspace or your own inbox.
+
+MODEL AND TRACE RULES
+The configured Foundry model/deployment is `openai--gpt-oss-120b`. Agent 0 owns the GPU while the current target run is active. Do not make model calls until Agent 0 releases the lease and Agent 6 schedules them. There is no user-imposed API-call count limit; hardware concurrency is still managed. Never expose credentials. Follow your workspace `AGENTS.md`, append the exact user prompt and accurate action summaries to your private `log.txt`, use only authoritative runtime metadata, sanitize any staged trace, and exclude the separate preparation conversation.
+
+COORDINATION
+Read `D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\protocol.md`, `assignments.md`, `status\agent0.md`, and the latest `alerts\` files at startup and every 1–2 minutes when practical. Write only `status\agent2.md` and `inbox\agent2\<timestamp>\...`. Ask Agent 0 for engine changes through a precise patch request; never edit another owner’s file. For an urgent issue, mark your status `URGENT` and write an alert request in your own inbox; cross-session file polling is periodic, not instantaneous.
+
+DELIVERABLE AND ACCEPTANCE
+Stage changed `identity.py`/`data.py` files only when a general correctness improvement is demonstrated, plus `test_agent2_identity.py`, `change-summary.md`, `log-fragment.txt`, and exact test results. Report false-link and future-leakage tests, affected cases only as diagnostics (not rules), and unresolved cases where source evidence is absent. Completion means Agent 0 can review and apply the isolated changes without changing the live branch or losing current implementation.
+Agent Response Summary:
+Implemented a narrow temporal interval fix in the isolated `identity.py` and added eight synthetic identity and cutoff regressions. The focused tests passed 8/8, the full unit suite passed 78/78, and a read-only identity diagnostic resolved 518/518 request emails with zero cutoff-alias leakage. Staged the candidate and test evidence for Agent 0; no model calls, end-to-end predictions, or live run changes were made.
+
+Actions:
+* Edited `code/audit_agent/identity.py` and added `code/tests/test_agent2_identity.py` in the isolated Agent 2 workspace.
+* Ran the focused identity test and full unit suite with the specified virtual-environment interpreter.
+* Ran a read-only identity-only diagnostic against participant-facing request and identity files.
+* Staged the source, test, change summary, and log fragment in `inbox/agent2/20261025-1534/`; refreshed `status/agent2.md`.
+
+Context:
+tool=Codex
+model=gpt-6-luna
+branch=main
+repo_root=D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent2
+worktree=D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent2
+parent_agent=Agent 0

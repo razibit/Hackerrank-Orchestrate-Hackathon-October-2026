@@ -1,0 +1,525 @@
+..EE.EE..EEEEEEEEE.EEEEEEEEEEEEEEEEE....................................
+======================================================================
+ERROR: test_compliant_tombstone_and_required_retained_record (test_audit_agent.AuditAgentTests.test_compliant_tombstone_and_required_retained_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 370, in test_compliant_tombstone_and_required_retained_record
+    result = run_case(request, resolver, [tombstone, security])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_conflicting_stable_reference_is_not_joined_by_alias (test_audit_agent.AuditAgentTests.test_conflicting_stable_reference_is_not_joined_by_alias)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 287, in test_conflicting_stable_reference_is_not_joined_by_alias
+    run_case(request, resolver, [record])
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_empty_stable_reference_placeholder_is_not_a_conflict (test_audit_agent.AuditAgentTests.test_empty_stable_reference_placeholder_is_not_a_conflict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 296, in test_empty_stable_reference_placeholder_is_not_a_conflict
+    result = run_case(request, resolver, [record])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_exact_historical_alias_link_resolves_model_uncertainty (test_audit_agent.AuditAgentTests.test_exact_historical_alias_link_resolves_model_uncertainty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 272, in test_exact_historical_alias_link_resolves_model_uncertainty
+    request, {"intent": "DELETE", "confidence": "HIGH"}, resolver, [record], [], rules(),
+                                                                                 ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_explicit_backup_restore_flags_resolve_present_archive_snapshot (test_audit_agent.AuditAgentTests.test_explicit_backup_restore_flags_resolve_present_archive_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 493, in test_explicit_backup_restore_flags_resolve_present_archive_snapshot
+    result = run_case(request, resolver, [backup])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_explicit_data_flow_enabled_flag_resolves_generic_present_row (test_audit_agent.AuditAgentTests.test_explicit_data_flow_enabled_flag_resolves_generic_present_row)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 455, in test_explicit_data_flow_enabled_flag_resolves_generic_present_row
+    result = run_case(request, resolver, [flow])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_explicit_data_flow_readback_cannot_be_downgraded_by_model (test_audit_agent.AuditAgentTests.test_explicit_data_flow_readback_cannot_be_downgraded_by_model)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 444, in test_explicit_data_flow_readback_cannot_be_downgraded_by_model
+    result = run_case(request, resolver, [flow])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_explicit_deletion_block_control_supports_block_plan (test_audit_agent.AuditAgentTests.test_explicit_deletion_block_control_supports_block_plan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 511, in test_explicit_deletion_block_control_supports_block_plan
+    result = run_case(request, resolver, [backup])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_explicit_logical_system_precedes_collector_service (test_audit_agent.AuditAgentTests.test_explicit_logical_system_precedes_collector_service)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 208, in test_explicit_logical_system_precedes_collector_service
+    result = run_case(request, resolver, [record], model=AlteredIdentifierFixtureModel())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_explicit_no_deletion_request_is_not_applicable (test_audit_agent.AuditAgentTests.test_explicit_no_deletion_request_is_not_applicable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 339, in test_explicit_no_deletion_request_is_not_applicable
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_exposed_tombstone_identifiers_are_redacted (test_audit_agent.AuditAgentTests.test_exposed_tombstone_identifiers_are_redacted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 378, in test_exposed_tombstone_identifiers_are_redacted
+    result = run_case(request, resolver, [tombstone])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_future_observation_is_excluded (test_audit_agent.AuditAgentTests.test_future_observation_is_excluded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 415, in test_future_observation_is_excluded
+    run_case(request, resolver, [future])
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_historical_alias_replica_flow_and_primary_absence (test_audit_agent.AuditAgentTests.test_historical_alias_replica_flow_and_primary_absence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 357, in test_historical_alias_replica_flow_and_primary_absence
+    result = run_case(request, resolver, [replica], [primary, connector, link])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_incomplete_result_satisfies_structural_contract (test_audit_agent.AuditAgentTests.test_incomplete_result_satisfies_structural_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 549, in test_incomplete_result_satisfies_structural_contract
+    result = run_case(request, resolver, [record])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_incomplete_snapshot_does_not_prove_absence (test_audit_agent.AuditAgentTests.test_incomplete_snapshot_does_not_prove_absence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 470, in test_incomplete_snapshot_does_not_prove_absence
+    run_case(request, resolver, [partial])
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_model_omission_fails_closed (test_audit_agent.AuditAgentTests.test_model_omission_fails_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 535, in test_model_omission_fails_closed
+    run_case(request, resolver, [record], model=StructuredFixtureModel(corrupt=True))
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_policy_loader_covers_all_fifteen_supplied_categories (test_audit_agent.AuditAgentTests.test_policy_loader_covers_all_fifteen_supplied_categories)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 538, in test_policy_loader_covers_all_fifteen_supplied_categories
+    loaded = rules()
+             ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_required_retained_record_does_not_need_delete_exposure_classification (test_audit_agent.AuditAgentTests.test_required_retained_record_does_not_need_delete_exposure_classification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 436, in test_required_retained_record_does_not_need_delete_exposure_classification
+    result = run_case(request, resolver, [retained])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_restore_allowed_does_not_prove_blocking_capability (test_audit_agent.AuditAgentTests.test_restore_allowed_does_not_prove_blocking_capability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 505, in test_restore_allowed_does_not_prove_blocking_capability
+    run_case(request, resolver, [backup])
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_restore_risk_is_blocked_and_verified (test_audit_agent.AuditAgentTests.test_restore_risk_is_blocked_and_verified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 484, in test_restore_risk_is_blocked_and_verified
+    result = run_case(request, resolver, [backup])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_same_time_readback_takes_precedence_over_snapshot (test_audit_agent.AuditAgentTests.test_same_time_readback_takes_precedence_over_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 476, in test_same_time_readback_takes_precedence_over_snapshot
+    result = run_case(request, resolver, [snapshot, readback])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_scoped_absence_readback_resolves_exposure_to_no (test_audit_agent.AuditAgentTests.test_scoped_absence_readback_resolves_exposure_to_no)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 426, in test_scoped_absence_readback_resolves_exposure_to_no
+    result = run_case(request, resolver, [absent])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_security_retention_date_is_compared_at_audit_cutoff (test_audit_agent.AuditAgentTests.test_security_retention_date_is_compared_at_audit_cutoff)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 519, in test_security_retention_date_is_compared_at_audit_cutoff
+    result = run_case(request, resolver, [record])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_source_grounded_ids_override_model_mutations (test_audit_agent.AuditAgentTests.test_source_grounded_ids_override_model_mutations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 193, in test_source_grounded_ids_override_model_mutations
+    result = run_case(request, resolver, [record], model=AlteredIdentifierFixtureModel())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_structured_deleted_tombstone_resolves_policy_condition (test_audit_agent.AuditAgentTests.test_structured_deleted_tombstone_resolves_policy_condition)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 403, in test_structured_deleted_tombstone_resolves_policy_condition
+    result = run_case(request, resolver, [tombstone])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_structured_snapshot_state_cannot_be_downgraded_to_unknown (test_audit_agent.AuditAgentTests.test_structured_snapshot_state_cannot_be_downgraded_to_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 527, in test_structured_snapshot_state_cannot_be_downgraded_to_unknown
+    result = run_case(request, resolver, [record])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_support_policy_second_pass_uses_explicit_message_context (test_audit_agent.AuditAgentTests.test_support_policy_second_pass_uses_explicit_message_context)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 309, in test_support_policy_second_pass_uses_explicit_message_context
+    request, {"intent": "DELETE", "confidence": "HIGH"}, resolver, [message], [], rules(), model,
+                                                                                  ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_support_policy_without_record_content_stays_unresolved (test_audit_agent.AuditAgentTests.test_support_policy_without_record_content_stays_unresolved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 325, in test_support_policy_without_record_content_stays_unresolved
+    request, {"intent": "DELETE", "confidence": "HIGH"}, resolver, [message], [], rules(), model,
+                                                                                  ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_tombstone_with_only_permitted_stable_id_is_already_redacted (test_audit_agent.AuditAgentTests.test_tombstone_with_only_permitted_stable_id_is_already_redacted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 389, in test_tombstone_with_only_permitted_stable_id_is_already_redacted
+    result = run_case(request, resolver, [tombstone])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+======================================================================
+ERROR: test_unscoped_claim_does_not_prove_absence (test_audit_agent.AuditAgentTests.test_unscoped_claim_does_not_prove_absence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 421, in test_unscoped_claim_does_not_prove_absence
+    run_case(request, resolver, [claim])
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 165, in run_case
+    rules(),
+    ^^^^^^^
+  File "D:\Hackerrank Orchastrate Hackathon 2026\ghost-data-parallel-20261025-0912\work\agent1\code\tests\test_audit_agent.py", line 152, in rules
+    with (DATASET_ROOT / "deletion_rules.csv").open(encoding="utf-8-sig", newline="") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Hackerrank Orchastrate Hackathon 2026\\ghost-data-parallel-20261025-0912\\work\\agent1\\dataset\\deletion_rules.csv'
+
+----------------------------------------------------------------------
+Ran 72 tests in 0.064s
+
+FAILED (errors=30)
+EXIT_CODE=1

@@ -1,0 +1,1 @@
+PASS: 11 rows satisfy structural checks. Evidence relevance and policy correctness still require evaluation.

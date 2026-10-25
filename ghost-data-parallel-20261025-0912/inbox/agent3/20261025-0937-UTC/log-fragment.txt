@@ -1,0 +1,7 @@
+LOGGING BLOCKER — no compliant SESSION START or per-turn entry is included for Agent 3.
+
+The repository AGENTS.md requires the exact model identifier from authoritative runtime metadata. The active runtime exposed the family descriptor “GPT-6” but no exact model identifier. The expected local rollout file for the current session was not available during this turn. The harness identity is Codex; do not fabricate a model value or append a placeholder. Agent 0 should append the actual entries only if the exact current-turn model identifier can be verified from authoritative metadata.
+
+The user-provided reusable guidance is preserved in code/prompts/agent_system_guidance.md and is not represented as a separate chat turn. The attached Agent 3 assignment is preserved byte-for-byte in code/prompts/agent3_policy_assignment.md. No secrets were included.
+
+Once metadata is verified, the turn summary should say: Agent 3 inspected the official rules and live policy resolver, confirmed the legal-hold and security-date condition gap, added an isolated condition helper and seven synthetic policy/order tests, and ran 77 unit tests successfully. The change remains unintegrated; Agent 0 must review the engine adapter before any sample or target evaluation.
